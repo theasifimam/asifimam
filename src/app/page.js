@@ -94,16 +94,16 @@ export default function Portfolio() {
 
   const experience = [
     {
-      year: "2023 - Present",
+      year: "2022 - Present",
       role: "Senior Frontend Developer",
-      company: "Tech Solutions Inc.",
+      company: "Volans Infomatics pvt ltd",
       description:
         "Leading development of enterprise applications with modern React ecosystem",
     },
     {
       year: "2021 - 2023",
       role: "Frontend Developer",
-      company: "Digital Agency Co.",
+      company: "Softmind Infotech pvt ltd",
       description:
         "Built responsive web applications for diverse clients across industries",
     },
@@ -120,7 +120,7 @@ export default function Portfolio() {
     borderHover: isDark
       ? "hover:border-white hover:border-opacity-30"
       : "hover:border-black hover:border-opacity-30",
-    bgCard: isDark ? "bg-white bg-opacity-5" : "bg-black bg-opacity-5",
+    bgCard: isDark ? "bg-white bg-opacity-5" : "bg-black bg-opacity-500",
     bgCardHover: isDark
       ? "hover:bg-white hover:bg-opacity-10"
       : "hover:bg-black hover:bg-opacity-10",
@@ -129,6 +129,14 @@ export default function Portfolio() {
     shadow: isDark ? "shadow-white" : "shadow-black",
     gridColor: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)",
     spotlightColor: isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.04)",
+  };
+  const downloadCV = () => {
+    const link = document.createElement("a");
+    link.href = "/asif-cv.pdf"; // file inside public/
+    link.download = "asif-imam-cv.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -303,6 +311,7 @@ export default function Portfolio() {
                 </button>
                 <button
                   className={`px-8 py-4 border-2 ${theme.border} rounded-full ${theme.borderHover} ${theme.bgCardHover} transition-all font-medium`}
+                  onClick={downloadCV}
                 >
                   Download CV
                 </button>
@@ -594,7 +603,13 @@ export default function Portfolio() {
                   <div className={`text-sm ${theme.textTertiary} mb-2`}>
                     {exp.year}
                   </div>
-                  <h3 className="text-2xl font-bold mb-1">{exp.role}</h3>
+                  <h3
+                    className={`text-2xl font-bold mb-1 ${
+                      isDark ? "text-black" : "text-white"
+                    }`}
+                  >
+                    {exp.role}
+                  </h3>
                   <div className={`${theme.textSecondary} mb-4`}>
                     {exp.company}
                   </div>
@@ -668,13 +683,21 @@ export default function Portfolio() {
               </span>
             </div>
             <div className="flex gap-4">
-              {["GitHub", "LinkedIn", "Twitter"].map((social) => (
+              {[
+                { name: "GitHub", link: "https://github.com/theasifimam" },
+                {
+                  name: "LinkedIn",
+                  link: "https://linkedin.com/in/theasifimam",
+                },
+                { name: "Twitter", link: "https://x.com/theasifimam" },
+              ].map((social) => (
                 <a
-                  key={social}
-                  href="#"
+                  key={social.name}
+                  href={social.link}
+                  target="_blanck"
                   className={`px-5 py-2 ${theme.bgCard} rounded-full border ${theme.border} ${theme.borderHover} ${theme.bgCardHover} transition-all text-sm ${theme.textSecondary}`}
                 >
-                  {social}
+                  {social.name}
                 </a>
               ))}
             </div>
