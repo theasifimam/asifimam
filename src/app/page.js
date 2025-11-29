@@ -15,6 +15,7 @@ import {
   Palette,
   Moon,
   Sun,
+  Phone,
 } from "lucide-react";
 
 export default function Portfolio() {
@@ -118,8 +119,8 @@ export default function Portfolio() {
       ? "border-white border-opacity-10"
       : "border-black border-opacity-10",
     borderHover: isDark
-      ? "hover:border-white hover:border-opacity-30"
-      : "hover:border-black hover:border-opacity-30",
+      ? "hover:border-white hover:text-black hover:border-opacity-30"
+      : "hover:border-black hover:text-white hover:border-opacity-30",
     bgCard: isDark ? "bg-white bg-opacity-5" : "bg-black bg-opacity-500",
     bgCardHover: isDark
       ? "hover:bg-white hover:bg-opacity-10"
@@ -310,7 +311,7 @@ export default function Portfolio() {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <button
-                  className={`px-8 py-4 border-2 ${theme.border} rounded-full ${theme.borderHover} ${theme.bgCardHover} transition-all font-medium`}
+                  className={`px-8 py-4 border-2 ${theme.border} cursor:pointer rounded-full ${theme.borderHover} ${theme.bgCardHover} transition-all font-medium`}
                   onClick={downloadCV}
                 >
                   Download CV
@@ -319,7 +320,7 @@ export default function Portfolio() {
 
               <div className="flex gap-4">
                 <a
-                  href="#"
+                  href="https://github.com/theasifimam"
                   className={`p-3 ${theme.bgCard} rounded-2xl border ${theme.border} ${theme.borderHover} ${theme.bgCardHover} transition-all`}
                 >
                   <Github
@@ -329,7 +330,7 @@ export default function Portfolio() {
                   />
                 </a>
                 <a
-                  href="#"
+                  href="https://linkedin.com/in/theasifimam"
                   className={`p-3 ${theme.bgCard} rounded-2xl border ${theme.border} ${theme.borderHover} ${theme.bgCardHover} transition-all`}
                 >
                   <Linkedin
@@ -339,10 +340,20 @@ export default function Portfolio() {
                   />
                 </a>
                 <a
-                  href="#"
+                  href="mailto:asifimam999@gmail.com"
                   className={`p-3 ${theme.bgCard} rounded-2xl border ${theme.border} ${theme.borderHover} ${theme.bgCardHover} transition-all`}
                 >
                   <Mail
+                    className={`w-5 h-5 ${
+                      isDark ? "text-black" : "text-white"
+                    }`}
+                  />
+                </a>
+                <a
+                  href="tel:+918882868861"
+                  className={`p-3 ${theme.bgCard} rounded-2xl border ${theme.border} ${theme.borderHover} ${theme.bgCardHover} transition-all`}
+                >
+                  <Phone
                     className={`w-5 h-5 ${
                       isDark ? "text-black" : "text-white"
                     }`}
