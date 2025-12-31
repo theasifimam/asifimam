@@ -68,6 +68,7 @@ export default function Footer({ isDark = true }) {
                 href={social.href}
                 className={`p-4 rounded-2xl border ${colors.border} ${colors.textMuted} transition-all duration-300 ${social.color} hover:scale-110 bg-zinc-500/5`}
                 aria-label={social.name}
+                target="_blanck"
               >
                 {social.icon}
               </a>
