@@ -1,155 +1,220 @@
 import {
-  ArrowRight,
-  Github,
-  Layers,
-  Linkedin,
-  Mail,
-  Palette,
   Zap,
+  Activity,
+  Terminal as TerminalIcon,
+  ArrowUpRight,
+  Cpu,
+  HardDrive,
+  Code,
 } from "lucide-react";
 
-export default function HeroSection(theme, isDark, typedText) {
+export default function SkillsHero({ isDark = true, theme }) {
+  // Strict Color Mapping
+  const colors = {
+    bg: isDark ? "bg-[#09090b]" : "bg-white", // Zinc 950
+    card: isDark ? "bg-[#121214]/50" : "bg-zinc-50",
+    border: isDark ? "border-white/10" : "border-black/5",
+    textMain: isDark ? "text-white" : "text-zinc-900",
+    textMuted: isDark ? "text-zinc-500" : "text-zinc-500",
+    accent: "text-emerald-500",
+    accentBg: "bg-emerald-500",
+  };
+
+  const metrics = [
+    {
+      label: "Architecture",
+      value: "Clean",
+      icon: <Cpu className="w-4 h-4" />,
+    },
+    { label: "Performance", value: "99+", icon: <Zap className="w-4 h-4" /> },
+    {
+      label: "Deployment",
+      value: "Edge",
+      icon: <Activity className="w-4 h-4" />,
+    },
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 pt-24">
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div>
+    <section
+      id="home"
+      className={`relative min-h-screen flex flex-col justify-center overflow-hidden transition-colors duration-700 py-[120px] ${colors.bg}`}
+    >
+      {/* BACKGROUND: Subtle Grid & Glow */}
+      <div className="absolute inset-0 opacity-20 mask-[radial-gradient(ellipse_at_center,black,transparent)] pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[40px_40px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        {/* LEFT: Branding & Philosophy (7 Cols) */}
+        {/* LEFT: Branding & Philosophy (7 Cols) */}
+        <div className="lg:col-span-7">
+          {/* Sub-header with a scanning line effect */}
+          <div className="flex items-center gap-3 mb-6">
             <div
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full ${theme.bgCard} border ${theme.border} mb-8`}
+              className={`relative px-4 py-1.5 rounded-full text-[10px] font-mono font-black tracking-[0.4em] uppercase border ${colors.border} overflow-hidden group`}
             >
-              <span className="relative flex h-3 w-3">
-                <span
-                  className={`animate-ping absolute inline-flex h-full w-full rounded-full ${
-                    isDark ? "bg-white" : "bg-black"
-                  } opacity-75`}
-                ></span>
-                <span
-                  className={`relative inline-flex rounded-full h-3 w-3 ${
-                    isDark ? "bg-white" : "bg-black"
-                  }`}
-                ></span>
-              </span>
-              <span className={`text-sm ${theme.textSecondary}`}>
-                Available for opportunities
-              </span>
-            </div>
-
-            <div className="mb-6">
-              <span className={`block ${theme.textTertiary} text-2xl mb-2`}>
-                Hi, I'm a
-              </span>
-              <h1 className="text-7xl md:text-8xl font-bold">
-                <span className="block">{typedText}</span>
-                <span
-                  className={`inline-block w-1 h-20 ${
-                    isDark ? "bg-white" : "bg-black"
-                  } ml-2 animate-pulse`}
-                ></span>
-              </h1>
-            </div>
-
-            <p
-              className={`text-xl ${theme.textSecondary} mb-8 leading-relaxed max-w-xl`}
-            >
-              Crafting pixel-perfect, performant web experiences with React,
-              Next.js, and modern JavaScript. Specialized in building scalable
-              frontend architectures.
-            </p>
-
-            <div className="flex flex-wrap gap-4 mb-10">
-              <button
-                className={`group px-8 py-4 ${theme.accent} rounded-full hover:shadow-2xl hover:${theme.shadow} hover:shadow-opacity-50 transition-all flex items-center gap-2 font-medium`}
-              >
-                View My Work
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button
-                className={`px-8 py-4 border-2 ${theme.border} rounded-full ${theme.borderHover} ${theme.bgCardHover} transition-all font-medium`}
-              >
-                Download CV
-              </button>
-            </div>
-
-            <div className="flex gap-4">
-              <a
-                href="#"
-                className={`p-3 ${theme.bgCard} rounded-2xl border ${theme.border} ${theme.borderHover} ${theme.bgCardHover} transition-all`}
-              >
-                <Github
-                  className={`w-5 h-5 ${isDark ? "text-black" : "text-white"}`}
-                />
-              </a>
-              <a
-                href="#"
-                className={`p-3 ${theme.bgCard} rounded-2xl border ${theme.border} ${theme.borderHover} ${theme.bgCardHover} transition-all`}
-              >
-                <Linkedin
-                  className={`w-5 h-5 ${isDark ? "text-black" : "text-white"}`}
-                />
-              </a>
-              <a
-                href="#"
-                className={`p-3 ${theme.bgCard} rounded-2xl border ${theme.border} ${theme.borderHover} ${theme.bgCardHover} transition-all`}
-              >
-                <Mail
-                  className={`w-5 h-5 ${isDark ? "text-black" : "text-white"}`}
-                />
-              </a>
+              <div className="absolute inset-0 bg-emerald-500/10 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <span className={colors.accent}>System.Core_Initiated</span>
             </div>
           </div>
 
-          {/* Right Content - Stats Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            <div
-              className={`col-span-2 ${theme.accent} rounded-3xl p-10 relative overflow-hidden transition-colors duration-500`}
-            >
-              <div
-                className={`absolute top-0 right-0 w-32 h-32 ${
-                  isDark ? "bg-black" : "bg-white"
-                } opacity-5 rounded-full blur-2xl`}
+          {/* MAIN HEADLINE: Massive, Layered, and Dynamic */}
+          <h2
+            className={`relative text-7xl md:text-[140px] font-black tracking-[-0.06em] uppercase leading-[0.75] mb-12 ${colors.textMain}`}
+          >
+            <span className="block opacity-90">Architecting</span>
+            <span className="relative inline-block mt-4">
+              {/* Outline Text Effect for "Digital" */}
+              <span
+                className={`absolute -inset-1 select-none blur-2xl opacity-20 bg-emerald-500 rounded-full`}
               />
-              <div className="relative">
-                <div className="text-6xl font-bold mb-2">3+</div>
-                <div className={isDark ? "text-gray-700" : "text-gray-300"}>
-                  Years Experience
+              <span className="relative italic text-transparent bg-clip-text bg-linear-to-br from-emerald-300 via-emerald-500 to-emerald-700 drop-shadow-2xl">
+                Digital
+              </span>
+            </span>
+            <br />
+            <span className="flex items-center gap-4">
+              Speed.
+              <span
+                className={`h-5 md:h-10 w-[60px] md:w-[120px] rounded-full border-4 md:border-8 ${colors.border} opacity-20`}
+              />
+            </span>
+          </h2>
+
+          {/* DESCRIPTION: High Readability + Monospaced accents */}
+          <p
+            className={`text-lg md:text-2xl max-w-xl leading-relaxed font-medium ${colors.textMuted}`}
+          >
+            High-frequency developer specializing in
+            <span
+              className={`mx-2 font-mono text-sm px-2 py-1 rounded bg-white/5 border ${colors.border} ${colors.textMain}`}
+            >
+              latency_optimization
+            </span>
+            and pixel-perfect
+            <span
+              className={`ml-2 underline underline-offset-8 decoration-emerald-500/30 ${colors.textMain}`}
+            >
+              User Experiences.
+            </span>
+          </p>
+
+          {/* Re-integrated Metrics with updated look */}
+          <div className="flex gap-12 mt-12 items-center">
+            {metrics.map((m, i) => (
+              <div key={i} className="flex flex-col">
+                <span className={`text-2xl font-black ${colors.textMain}`}>
+                  {m.value}
+                </span>
+                <span
+                  className={`text-[10px] uppercase font-bold tracking-[0.2em] opacity-40 ${colors.accent}`}
+                >
+                  {m.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT: The Live Code Terminal (5 Cols) */}
+        <div className="lg:col-span-5 relative">
+          {/* Outer Glow */}
+          <div className="absolute -inset-1 bg-emerald-500/20 rounded-[36px] blur-2xl opacity-50" />
+
+          <div
+            className={`relative rounded-4xl border ${colors.border} ${colors.card} p-1 backdrop-blur-xl overflow-hidden`}
+          >
+            {/* Terminal Header */}
+            <div
+              className={`flex items-center justify-between px-6 py-4 border-b ${colors.border}`}
+            >
+              <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-zinc-800" />
+                <div className="w-2.5 h-2.5 rounded-full bg-zinc-800" />
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/40" />
+              </div>
+              <span className="text-[10px] font-mono opacity-40 uppercase tracking-widest font-bold">
+                Main.tsx
+              </span>
+            </div>
+
+            {/* List of Skills with Status Bars */}
+            <div className="p-6 space-y-5">
+              {[
+                {
+                  name: "React / Next.js",
+                  icon: <Code className="w-4 h-4" />,
+                  pct: "w-[95%]",
+                },
+                {
+                  name: "Node.js / Express",
+                  icon: <HardDrive className="w-4 h-4" />,
+                  pct: "w-[88%]",
+                },
+                {
+                  name: "TypeScript / JS",
+                  icon: <TerminalIcon className="w-4 h-4" />,
+                  pct: "w-[92%]",
+                },
+                {
+                  name: "PostgreSQL / Prisma",
+                  icon: <Activity className="w-4 h-4" />,
+                  pct: "w-[85%]",
+                },
+              ].map((skill, i) => (
+                <div key={i} className="group">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`${colors.accent} opacity-50 group-hover:opacity-100 transition-opacity`}
+                      >
+                        {skill.icon}
+                      </div>
+                      <span
+                        className={`text-xs font-bold uppercase tracking-tight ${colors.textMain}`}
+                      >
+                        {skill.name}
+                      </span>
+                    </div>
+                    <span className="text-[9px] font-mono opacity-30">
+                      STABLE
+                    </span>
+                  </div>
+                  <div
+                    className={`h-1 w-full rounded-full ${
+                      isDark ? "bg-zinc-800" : "bg-zinc-200"
+                    } overflow-hidden`}
+                  >
+                    <div
+                      className={`h-full ${colors.accentBg} ${skill.pct} transition-all duration-1000 group-hover:brightness-125`}
+                    />
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
 
-            <div
-              className={`${theme.bgCard} backdrop-blur border ${theme.border} rounded-3xl p-6 flex flex-col items-center justify-center ${theme.borderHover} transition-all group`}
-            >
-              <Zap
-                className={`w-10 h-10 mb-3 group-hover:scale-110 transition-transform ${theme.textSecondary}`}
-              />
-              <div className={`text-center text-sm ${theme.textSecondary}`}>
-                Fast Performance
-              </div>
-            </div>
-
-            <div
-              className={`${theme.bgCard} backdrop-blur border ${theme.border} rounded-3xl p-6 flex flex-col items-center justify-center ${theme.borderHover} transition-all group`}
-            >
-              <Layers
-                className={`w-10 h-10 mb-3 group-hover:scale-110 transition-transform ${theme.textSecondary}`}
-              />
-              <div className={`text-center text-sm ${theme.textSecondary}`}>
-                Clean Code
-              </div>
-            </div>
-
-            <div
-              className={`col-span-2 ${theme.bgCard} backdrop-blur border ${theme.border} rounded-3xl p-6 flex items-center justify-center ${theme.borderHover} transition-all group`}
-            >
-              <Palette
-                className={`w-8 h-8 mr-4 group-hover:scale-110 transition-transform ${theme.textSecondary}`}
-              />
-              <div className={`text-center text-sm ${theme.textSecondary}`}>
-                Pixel-Perfect Design
-              </div>
+            {/* Call to Action Inside Terminal */}
+            <div className={`p-6 border-t ${colors.border} bg-emerald-500/5`}>
+              <button
+                className={`w-full py-4 rounded-xl ${colors.accentBg} text-zinc-950 font-black text-[11px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-emerald-500/20`}
+              >
+                Analyze Work <ArrowUpRight className="w-4 h-4" />
+              </button>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* FOOTER: System Status */}
+      <div className="absolute bottom-10 left-0 w-full px-6 flex justify-between items-center opacity-30">
+        <div className="flex items-center gap-4">
+          <div className={`h-px w-12 ${isDark ? "bg-white" : "bg-black"}`} />
+          <span className="text-[9px] font-mono uppercase tracking-[0.3em]">
+            Lat: 28.6139 | Lon: 77.2090
+          </span>
+        </div>
+        <div className="text-[9px] font-mono uppercase tracking-[0.3em]">
+          Secure Connection Established
         </div>
       </div>
     </section>
