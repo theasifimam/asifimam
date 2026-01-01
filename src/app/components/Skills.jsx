@@ -1,4 +1,5 @@
 import { Code2, Cpu, Globe, Layers, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Skills({ isDark }) {
   const categories = [
@@ -36,10 +37,33 @@ export default function Skills({ isDark }) {
     },
   ];
 
+  // Animation variants for the entrance
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
+
   return (
     <section id="skills" className="py-24 px-4 sm:px-6 max-w-7xl mx-auto">
-      {/* Header with Glass Effect Label */}
-      <div className="flex flex-col items-start mb-16">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="flex flex-col items-start mb-16"
+      >
         <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-emerald-500/30 text-emerald-500 mb-4 bg-emerald-500/5">
           Expertise
         </span>
@@ -49,17 +73,25 @@ export default function Skills({ isDark }) {
           }`}
         >
           MY{" "}
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-cyan-500 text-italic">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-cyan-500 italic">
             ARSENAL
           </span>
         </h2>
-      </div>
+      </motion.div>
 
-      {/* Bento Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {/* Bento Grid */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        className="grid grid-cols-1 md:grid-cols-3 gap-4"
+      >
         {categories.map((cat, i) => (
-          <div
+          <motion.div
             key={i}
+            variants={cardVariants}
+            whileTap={{ scale: 0.98 }}
             className={`group relative overflow-hidden rounded-4xl border transition-all duration-500 p-8
               ${cat.size}
               ${
@@ -69,13 +101,14 @@ export default function Skills({ isDark }) {
               }
             `}
           >
-            {/* Mesh Gradient Background */}
+            {/* RESTORED: Original Mesh Gradient Background */}
             <div
               className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-linear-to-br ${cat.gradient} blur-3xl`}
             />
 
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex justify-between items-start mb-12">
+                {/* RESTORED: Original Scale-up on Icon */}
                 <div
                   className={`p-4 rounded-2xl ${
                     isDark ? "bg-zinc-800" : "bg-white shadow-sm"
@@ -103,9 +136,12 @@ export default function Skills({ isDark }) {
                 </h3>
 
                 <div className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill) => (
-                    <span
+                  {cat.skills.map((skill, index) => (
+                    <motion.span
                       key={skill}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4 + index * 0.05 }}
                       className={`text-xs font-medium px-4 py-2 rounded-xl backdrop-blur-md border transition-all
                         ${
                           isDark
@@ -115,14 +151,14 @@ export default function Skills({ isDark }) {
                       `}
                     >
                       {skill}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
