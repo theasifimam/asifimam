@@ -12,9 +12,40 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Asif Imam",
+  title: "Asif Imam | Software Engineer",
   description:
-    "Software Engineer - MERN Stack Specialist, Fast, Efficient and Reliable Software by Asif Imam",
+    "Software Engineer - MERN Stack Specialist. Building fast, efficient, and reliable software.",
+  // Basic Metadata
+  metadataBase: new URL("https://ai.mazlis.com"), // Replace with your actual domain
+  alternates: {
+    canonical: "/",
+  },
+  // Open Graph (Facebook, LinkedIn, WhatsApp)
+  openGraph: {
+    title: "Asif Imam | Software Engineer",
+    description:
+      "MERN Stack Specialist building high-performance digital systems.",
+    url: "https://ai.mazlis.com",
+    siteName: "Asif Imam Portfolio",
+    images: [
+      {
+        url: "/assets/web-ui.png", // Place an image named og-image.jpg in your /public folder
+        width: 1200,
+        height: 630,
+        alt: "Asif Imam Portfolio Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  // Twitter Card
+  twitter: {
+    card: "/assets/web-ui.png",
+    title: "Asif Imam | Software Engineer",
+    description:
+      "MERN Stack Specialist building high-performance digital systems.",
+    images: ["/assets/web-ui.png"], // Same image as above
+  },
 };
 
 export default function RootLayout({ children }) {
