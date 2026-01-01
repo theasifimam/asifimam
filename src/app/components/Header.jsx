@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { Terminal, Zap, Code2, Briefcase, User, Home } from "lucide-react";
+import {
+  Terminal,
+  Zap,
+  Code2,
+  Briefcase,
+  User,
+  Home,
+  FileDown,
+} from "lucide-react";
 
 export default function Header({ isDark, setIsDark, theme }) {
   const [activeSection, setActiveSection] = useState("home");
 
   const navLinks = [
     { name: "Home", href: "#home", id: "home", icon: Home },
+    { name: "About", href: "#about", id: "about", icon: User },
     { name: "Stack", href: "#skills", id: "skills", icon: Code2 },
     { name: "Work", href: "#projects", id: "projects", icon: Briefcase },
-    { name: "About", href: "#about", id: "about", icon: User },
   ];
 
   // Logic to detect which section is in view
   useEffect(() => {
     const handleScroll = () => {
-      const offset = 100; // Adjust this for sensitivity
+      const offset = 100;
       const scrollPos = window.scrollY + offset;
 
       navLinks.forEach((link) => {
@@ -33,7 +41,6 @@ export default function Header({ isDark, setIsDark, theme }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Smooth scroll handler
   const handleScrollTo = (e, id) => {
     e.preventDefault();
     const element = document.getElementById(id);
@@ -42,6 +49,9 @@ export default function Header({ isDark, setIsDark, theme }) {
       setActiveSection(id);
     }
   };
+
+  // Replace this with your actual CV link (Google Drive, Cloudinary, or public folder)
+  const CV_URL = "/assets/asif-imam-cv.pdf";
 
   return (
     <>
@@ -74,28 +84,44 @@ export default function Header({ isDark, setIsDark, theme }) {
             ))}
           </div>
 
-          <button
-            onClick={() => setIsDark(!isDark)}
-            className={`p-2 border rounded-xl transition-all active:scale-90 ${
-              isDark
-                ? "border-zinc-800 bg-zinc-900/50"
-                : "border-zinc-200 bg-white/50"
-            }`}
-          >
-            <Zap
-              className={`w-4 h-4 ${
-                isDark ? "fill-emerald-500 text-emerald-500" : "text-zinc-400"
+          <div className="flex items-center gap-2">
+            {/* CV BUTTON - Desktop */}
+            <a
+              href={CV_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`hidden sm:flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all active:scale-95 border ${
+                isDark
+                  ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-500 hover:bg-emerald-500 hover:text-black"
+                  : "bg-emerald-500 text-white hover:bg-emerald-600"
               }`}
-            />
-          </button>
+            >
+              CV <FileDown className="w-3 h-3" />
+            </a>
+
+            <button
+              onClick={() => setIsDark(!isDark)}
+              className={`p-2 border rounded-full transition-all active:scale-90 ${
+                isDark
+                  ? "border-zinc-800 bg-zinc-900/50"
+                  : "border-zinc-200 bg-white/50"
+              }`}
+            >
+              <Zap
+                className={`w-4 h-4 ${
+                  isDark ? "fill-emerald-500 text-emerald-500" : "text-zinc-400"
+                }`}
+              />
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* MOBILE BOTTOM DOCK */}
-      <div className="fixed md:hidden bottom-8 left-1/2 -translate-x-1/2 w-[92%] max-w-[400px] z-50">
+      <div className="fixed md:hidden bottom-4 left-1/2 -translate-x-1/2 w-[95%] max-w-[440px] z-50">
         <div
           className={`
-          flex items-center justify-around p-2 rounded-3xl border backdrop-blur-2xl shadow-2xl
+          flex items-center justify-around p-2 rounded-full border backdrop-blur-2xl shadow-xl
           ${
             isDark
               ? "bg-zinc-950/80 border-white/10 shadow-black/50"
@@ -110,15 +136,13 @@ export default function Header({ isDark, setIsDark, theme }) {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleScrollTo(e, link.id)}
-                className="relative flex flex-col items-center justify-center py-2 px-4 transition-all duration-300"
+                className="relative flex flex-col items-center justify-center py-2 px-3 transition-all duration-300"
               >
-                {/* Visual Glow behind active icon */}
                 {isActive && (
                   <div className="absolute inset-0 bg-emerald-500/10 blur-md rounded-full" />
                 )}
-
                 <link.icon
-                  className={`w-5 h-5 mb-1 z-10 transition-transform duration-300 ${
+                  className={`w-5 h-5 mb-1 z-10 ${
                     isActive
                       ? "text-emerald-500 scale-110"
                       : isDark
@@ -126,9 +150,8 @@ export default function Header({ isDark, setIsDark, theme }) {
                       : "text-zinc-400"
                   }`}
                 />
-
                 <span
-                  className={`text-[9px] font-black uppercase tracking-tighter z-10 transition-colors ${
+                  className={`text-[8px] font-black uppercase tracking-tighter z-10 ${
                     isActive
                       ? "text-emerald-500"
                       : isDark
@@ -138,18 +161,26 @@ export default function Header({ isDark, setIsDark, theme }) {
                 >
                   {link.name}
                 </span>
-
-                {/* Bottom Active Indicator Dot */}
-                <div
-                  className={`mt-1 w-1 h-1 rounded-full transition-all duration-300 ${
-                    isActive
-                      ? "bg-emerald-500 scale-100"
-                      : "bg-transparent scale-0"
-                  }`}
-                />
               </a>
             );
           })}
+
+          {/* CV OPTION - Mobile Dock */}
+          <div
+            className={`w-px h-8 mx-1 ${isDark ? "bg-white/10" : "bg-black/5"}`}
+          />
+
+          <a
+            href={CV_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center py-2 px-3 text-emerald-500"
+          >
+            <FileDown className="w-5 h-5 mb-1" />
+            <span className="text-[8px] font-black uppercase tracking-tighter">
+              CV
+            </span>
+          </a>
         </div>
       </div>
     </>

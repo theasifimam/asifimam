@@ -17,7 +17,6 @@ export default function Projects({ isDark, theme }) {
         "User Authentication",
         "Posts, Comments, Replies",
         "99.9% Uptime",
-        "Real-time Sync",
         "Chat System",
       ],
       tech: ["Next.js", "Node.js", "Express", "MongoDB", "Redux Toolkit"],
@@ -34,8 +33,13 @@ export default function Projects({ isDark, theme }) {
       title: "SabkiMandi Dashboard",
       category: "Frontend Architecture",
       description:
-        "Built a real-time dashboard using React.js and Chart.js. Implemented a robust data synchronization system.",
-      metrics: ["Real-time Sync", "99.9% Uptime"],
+        "Built a real-time dashboard using React.js and Chart.js. Implemented a robust data synchronization system. Implemented a bulk product update, add, delete and get using CSV or Excel files.",
+      metrics: [
+        "Real-time Sync",
+        "99.9% Uptime",
+        "CSV/Excel Support",
+        "API Integration",
+      ],
       tech: ["React.js", "Chart.js", "Express", "Node.js", "SQL"],
       link: "https://sabkimandi.com/",
       images: ["/assets/hrms.png"],

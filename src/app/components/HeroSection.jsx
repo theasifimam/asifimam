@@ -37,18 +37,17 @@ export default function SkillsHero({ isDark = true, theme }) {
   return (
     <section
       id="home"
-      className={`relative min-h-screen flex flex-col justify-center overflow-hidden transition-colors duration-700 py-[120px] ${colors.bg}`}
+      className={`relative min-h-screen flex flex-col justify-center overflow-hidden transition-colors duration-700 pt-30 pb-20 lg:py-[120px] ${colors.bg}`}
     >
       {/* BACKGROUND: Subtle Grid & Glow */}
       <div className="absolute inset-0 opacity-20 mask-[radial-gradient(ellipse_at_center,black,transparent)] pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[40px_40px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-        {/* LEFT: Branding & Philosophy (7 Cols) */}
-        {/* LEFT: Branding & Philosophy (7 Cols) */}
-        <div className="lg:col-span-7">
-          {/* Sub-header with a scanning line effect */}
+      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
+        {/* LEFT: Branding & Philosophy */}
+        <div className="lg:col-span-7 order-2 lg:order-1">
+          {/* Sub-header */}
           <div className="flex items-center gap-3 mb-6">
             <div
               className={`relative px-4 py-1.5 rounded-full text-[10px] font-mono font-black tracking-[0.4em] uppercase border ${colors.border} overflow-hidden group`}
@@ -58,13 +57,12 @@ export default function SkillsHero({ isDark = true, theme }) {
             </div>
           </div>
 
-          {/* MAIN HEADLINE: Massive, Layered, and Dynamic */}
+          {/* MAIN HEADLINE: Adjusted sizes for mobile (text-4xl -> text-7xl -> text-[140px]) */}
           <h2
-            className={`relative text-7xl md:text-[140px] font-black tracking-[-0.06em] uppercase leading-[0.75] mb-12 ${colors.textMain}`}
+            className={`relative text-4xl sm:text-6xl md:text-7xl lg:text-[120px] xl:text-[140px] font-black tracking-[-0.06em] uppercase leading-[0.85] lg:leading-[0.75] mb-8 lg:mb-12 ${colors.textMain}`}
           >
             <span className="block opacity-90">Architecting</span>
-            <span className="relative inline-block mt-4">
-              {/* Outline Text Effect for "Digital" */}
+            <span className="relative inline-block mt-2 lg:mt-4">
               <span
                 className={`absolute -inset-1 select-none blur-2xl opacity-20 bg-emerald-500 rounded-full`}
               />
@@ -73,21 +71,21 @@ export default function SkillsHero({ isDark = true, theme }) {
               </span>
             </span>
             <br />
-            <span className="flex items-center gap-4">
+            <span className="flex items-center gap-4 mt-2 lg:mt-0">
               Speed.
               <span
-                className={`h-5 md:h-10 w-[60px] md:w-[120px] rounded-full border-4 md:border-8 ${colors.border} opacity-20`}
+                className={`h-4 sm:h-6 lg:h-10 w-10 sm:w-20 lg:w-[120px] rounded-full border-2 sm:border-4 lg:border-8 ${colors.border} opacity-20`}
               />
             </span>
           </h2>
 
-          {/* DESCRIPTION: High Readability + Monospaced accents */}
+          {/* DESCRIPTION */}
           <p
-            className={`text-lg md:text-2xl max-w-xl leading-relaxed font-medium ${colors.textMuted}`}
+            className={`text-base sm:text-lg md:text-2xl max-w-xl leading-relaxed font-medium ${colors.textMuted}`}
           >
             High-frequency developer specializing in
             <span
-              className={`mx-2 font-mono text-sm px-2 py-1 rounded bg-white/5 border ${colors.border} ${colors.textMain}`}
+              className={`inline-block mx-2 font-mono text-[10px] sm:text-sm px-2 py-0.5 rounded bg-white/5 border ${colors.border} ${colors.textMain}`}
             >
               latency_optimization
             </span>
@@ -99,15 +97,17 @@ export default function SkillsHero({ isDark = true, theme }) {
             </span>
           </p>
 
-          {/* Re-integrated Metrics with updated look */}
-          <div className="flex gap-12 mt-12 items-center">
+          {/* Metrics: Wrapped for small screens */}
+          <div className="flex flex-wrap gap-6 sm:gap-12 mt-10 lg:mt-12 items-center">
             {metrics.map((m, i) => (
               <div key={i} className="flex flex-col">
-                <span className={`text-2xl font-black ${colors.textMain}`}>
+                <span
+                  className={`text-xl sm:text-2xl font-black ${colors.textMain}`}
+                >
                   {m.value}
                 </span>
                 <span
-                  className={`text-[10px] uppercase font-bold tracking-[0.2em] opacity-40 ${colors.accent}`}
+                  className={`text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.2em] opacity-40 ${colors.accent}`}
                 >
                   {m.label}
                 </span>
@@ -116,30 +116,29 @@ export default function SkillsHero({ isDark = true, theme }) {
           </div>
         </div>
 
-        {/* RIGHT: The Live Code Terminal (5 Cols) */}
-        <div className="lg:col-span-5 relative">
-          {/* Outer Glow */}
+        {/* RIGHT: The Live Code Terminal */}
+        <div className="lg:col-span-5 relative order-1 lg:order-2">
           <div className="absolute -inset-1 bg-emerald-500/20 rounded-[36px] blur-2xl opacity-50" />
 
           <div
-            className={`relative rounded-4xl border ${colors.border} ${colors.card} p-1 backdrop-blur-xl overflow-hidden`}
+            className={`relative rounded-3xl lg:rounded-4xl border ${colors.border} ${colors.card} p-0.5 lg:p-1 backdrop-blur-xl overflow-hidden`}
           >
             {/* Terminal Header */}
             <div
-              className={`flex items-center justify-between px-6 py-4 border-b ${colors.border}`}
+              className={`flex items-center justify-between px-4 lg:px-6 py-3 lg:py-4 border-b ${colors.border}`}
             >
               <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-zinc-800" />
-                <div className="w-2.5 h-2.5 rounded-full bg-zinc-800" />
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/40" />
+                <div className="w-2 h-2 lg:w-2.5 lg:h-2.5 rounded-full bg-zinc-800" />
+                <div className="w-2 h-2 lg:w-2.5 lg:h-2.5 rounded-full bg-zinc-800" />
+                <div className="w-2 h-2 lg:w-2.5 lg:h-2.5 rounded-full bg-emerald-500/40" />
               </div>
-              <span className="text-[10px] font-mono opacity-40 uppercase tracking-widest font-bold">
+              <span className="text-[9px] lg:text-[10px] font-mono opacity-40 uppercase tracking-widest font-bold">
                 Main.tsx
               </span>
             </div>
 
-            {/* List of Skills with Status Bars */}
-            <div className="p-6 space-y-5">
+            {/* List of Skills */}
+            <div className="p-4 lg:p-6 space-y-4 lg:space-y-5">
               {[
                 {
                   name: "React / Next.js",
@@ -147,17 +146,17 @@ export default function SkillsHero({ isDark = true, theme }) {
                   pct: "w-[95%]",
                 },
                 {
-                  name: "Node.js / Express",
-                  icon: <HardDrive className="w-4 h-4" />,
-                  pct: "w-[88%]",
-                },
-                {
-                  name: "TypeScript / JS",
+                  name: "JavaScript / TS ",
                   icon: <TerminalIcon className="w-4 h-4" />,
                   pct: "w-[92%]",
                 },
                 {
-                  name: "PostgreSQL / Prisma",
+                  name: "Node.js / Express",
+                  icon: <HardDrive className="w-4 h-4" />,
+                  pct: "w-[78%]",
+                },
+                {
+                  name: "Tailwind CSS / Shadcn UI",
                   icon: <Activity className="w-4 h-4" />,
                   pct: "w-[85%]",
                 },
@@ -171,12 +170,12 @@ export default function SkillsHero({ isDark = true, theme }) {
                         {skill.icon}
                       </div>
                       <span
-                        className={`text-xs font-bold uppercase tracking-tight ${colors.textMain}`}
+                        className={`text-[10px] lg:text-xs font-bold uppercase tracking-tight ${colors.textMain}`}
                       >
                         {skill.name}
                       </span>
                     </div>
-                    <span className="text-[9px] font-mono opacity-30">
+                    <span className="text-[8px] lg:text-[9px] font-mono opacity-30">
                       STABLE
                     </span>
                   </div>
@@ -193,10 +192,11 @@ export default function SkillsHero({ isDark = true, theme }) {
               ))}
             </div>
 
-            {/* Call to Action Inside Terminal */}
-            <div className={`p-6 border-t ${colors.border} bg-emerald-500/5`}>
+            <div
+              className={`p-4 lg:p-6 border-t ${colors.border} bg-emerald-500/5`}
+            >
               <button
-                className={`w-full py-4 rounded-xl ${colors.accentBg} text-zinc-950 font-black text-[11px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-emerald-500/20`}
+                className={`w-full py-3 lg:py-4 rounded-3xl ${colors.accentBg} text-zinc-950 font-black text-[10px] lg:text-[11px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-emerald-500/20`}
               >
                 Analyze Work <ArrowUpRight className="w-4 h-4" />
               </button>
@@ -205,15 +205,19 @@ export default function SkillsHero({ isDark = true, theme }) {
         </div>
       </div>
 
-      {/* FOOTER: System Status */}
-      <div className="absolute bottom-10 left-0 w-full px-6 flex justify-between items-center opacity-30">
+      {/* FOOTER: Adjusted for mobile (flex-col on tiny screens) */}
+      <div className="absolute bottom-6 lg:bottom-10 left-0 w-full px-6 flex flex-col sm:flex-row justify-between items-center gap-4 opacity-30">
         <div className="flex items-center gap-4">
-          <div className={`h-px w-12 ${isDark ? "bg-white" : "bg-black"}`} />
-          <span className="text-[9px] font-mono uppercase tracking-[0.3em]">
+          <div
+            className={`hidden sm:block h-px w-12 ${
+              isDark ? "bg-white" : "bg-black"
+            }`}
+          />
+          <span className="text-[8px] lg:text-[9px] font-mono uppercase tracking-[0.3em]">
             Lat: 28.6139 | Lon: 77.2090
           </span>
         </div>
-        <div className="text-[9px] font-mono uppercase tracking-[0.3em]">
+        <div className="text-[8px] lg:text-[9px] font-mono uppercase tracking-[0.3em]">
           Secure Connection Established
         </div>
       </div>

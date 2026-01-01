@@ -60,7 +60,7 @@ export default function EnhancedAboutSlider({ isDark = true }) {
   return (
     <section
       id="about"
-      className={`py-32 px-6 ${colors.bg} transition-colors duration-700`}
+      className={`py-12 px-6 ${colors.bg} transition-colors duration-700`}
     >
       <div className="max-w-7xl mx-auto">
         {/* NAVIGATION HEADER */}
@@ -118,22 +118,6 @@ export default function EnhancedAboutSlider({ isDark = true }) {
 
         {/* CONTENT GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          {/* IMAGE DISK/FRAME */}
-          <div className="lg:col-span-4 relative group">
-            <div className="relative aspect-4/5 overflow-hidden rounded-4xl bg-zinc-800">
-              <img
-                src="/asifimam.jpg" // Replace with your image path
-                alt="Portrait"
-                className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
-              />
-              <div className="absolute inset-0 border-12 rounded-4xl border-emerald-500/10 pointer-events-none" />
-            </div>
-            {/* Decorative Element */}
-            <div
-              className={`absolute -bottom-6 -right-6 w-32 h-32 rounded-4xl border-r-2 border-b-2 ${colors.border} -z-10`}
-            />
-          </div>
-
           {/* TEXT CONTENT */}
           <div className="lg:col-span-8 pt-4">
             <AnimatePresence mode="wait">
@@ -179,6 +163,31 @@ export default function EnhancedAboutSlider({ isDark = true }) {
                   }`}
                 />
               ))}
+            </div>
+          </div>
+
+          {/* IMAGE DISK/FRAME */}
+          <div className="lg:col-span-4 relative group">
+            <div className="relative aspect-4/5 overflow-hidden rounded-4xl bg-zinc-800">
+              <img
+                src="/asifimam.jpg" // Replace with your image path
+                alt="Portrait"
+                className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+              />
+              <div className="absolute inset-0 border-12 rounded-4xl border-emerald-500/10 pointer-events-none" />
+            </div>
+            {/* Decorative Element */}
+            <div
+              className={`absolute -bottom-6 -right-6 w-32 h-32 rounded-4xl border-r-2 border-b-2 ${colors.border} -z-10`}
+            />
+
+            {/* show name on image */}
+            <div className="absolute bottom-2 left-20 w-full pointer-events-none">
+              <span
+                className={`text-2xl md:text-4xl text-white font-extrabold uppercase tracking-widest`}
+              >
+                <span className={colors.accent}>Asif</span> Imam
+              </span>
             </div>
           </div>
         </div>
