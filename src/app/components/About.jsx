@@ -68,6 +68,7 @@ export default function AboutRedesign({ isDark = true }) {
 
   return (
     <section
+      id="about"
       className={`relative min-h-screen flex items-center py-20 overflow-hidden ${colors.bg}`}
     >
       {/* Dynamic Background Watermark */}
@@ -117,7 +118,7 @@ export default function AboutRedesign({ isDark = true }) {
                 className="space-y-8"
               >
                 <h3
-                  className={`text-6xl sm:text-8xl font-black uppercase tracking-tighter leading-[0.85] ${colors.textMain}`}
+                  className={`text-5xl sm:text-8xl font-black uppercase tracking-tighter leading-[0.85] ${colors.textMain}`}
                 >
                   {aboutData[active].title} <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-700 italic">
@@ -154,7 +155,7 @@ export default function AboutRedesign({ isDark = true }) {
                   </span>
                   <span
                     className={`text-[11px] font-bold uppercase tracking-widest ${
-                      active === i ? "text-white" : "text-inherit"
+                      active === i ? "text-emerald-500" : "text-inherit"
                     }`}
                   >
                     {item.label}

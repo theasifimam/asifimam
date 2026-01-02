@@ -17,6 +17,12 @@ export default function Header({ isDark, setIsDark, theme }) {
     { name: "Home", href: "#home", id: "home", icon: Home },
     { name: "About", href: "#about", id: "about", icon: User },
     { name: "Stack", href: "#skills", id: "skills", icon: Code2 },
+    {
+      name: "Experience",
+      href: "#experience",
+      id: "experience",
+      icon: Briefcase,
+    },
     { name: "Work", href: "#projects", id: "projects", icon: Briefcase },
   ];
 

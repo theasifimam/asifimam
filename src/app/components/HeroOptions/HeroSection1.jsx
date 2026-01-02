@@ -42,6 +42,7 @@ export default function HeroSection1({ isDark = true }) {
   return (
     <div
       className={`relative min-h-screen w-full overflow-hidden pt-24 lg:pt-16 flex flex-col justify-center ${theme.bg} selection:bg-emerald-500/30`}
+      id="home"
     >
       {/* --- BACKGROUND LAYERS --- */}
 
@@ -65,9 +66,9 @@ export default function HeroSection1({ isDark = true }) {
       {/* 3. Massive Watermark Text */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none z-0 overflow-hidden">
         <h1
-          className={`text-[20vw] font-black leading-none opacity-[0.03] ${theme.text} select-none`}
+          className={`text-[15vw] font-black leading-none opacity-[0.03] ${theme.text} select-none`}
         >
-          // Imam
+          //asif_imam
         </h1>
       </div>
 
