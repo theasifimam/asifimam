@@ -49,7 +49,7 @@ export default function AboutRedesign({ isDark = true }) {
       highlight: "Foundation",
       image: "/asifimam2.jpg",
       content:
-        "B.Tech. in Computer Science from GITM. Specialized in Distributed Systems and UI/UX Design Principles.",
+        "B.Tech. in Computer Science from GITAM. Specialized in Web, App development and UI/UX Design Principles.",
     },
     {
       label: "Lifestyle",
@@ -58,7 +58,7 @@ export default function AboutRedesign({ isDark = true }) {
       highlight: "Element",
       image: "/asifimam.jpg",
       content:
-        "When I'm not at the terminal, you'll find me capturing street photography, bouldering, or experimenting with modular synthesizers.",
+        "When I am not coding, I am usually solving problems in other ways. I love bouldering because it’s like a physical puzzle. I enjoy street photography because it helps me see the world clearly. I also build modular synthesizers, which lets me explore how sound and logic work together.",
     },
   ];
 

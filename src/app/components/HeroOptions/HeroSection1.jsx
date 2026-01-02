@@ -41,7 +41,7 @@ export default function HeroSection1({ isDark = true }) {
 
   return (
     <div
-      className={`relative min-h-screen w-full overflow-hidden pt-24 lg:pt-0 flex flex-col justify-center ${theme.bg} selection:bg-emerald-500/30`}
+      className={`relative min-h-screen w-full overflow-hidden pt-24 lg:pt-16 flex flex-col justify-center ${theme.bg} selection:bg-emerald-500/30`}
     >
       {/* --- BACKGROUND LAYERS --- */}
 
