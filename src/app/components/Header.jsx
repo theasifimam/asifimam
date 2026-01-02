@@ -151,10 +151,10 @@ export default function Header({ isDark, setIsDark, theme }) {
           initial={{ y: 100, x: "-50%", opacity: 0 }}
           animate={{ y: 0, x: "-50%", opacity: 1 }}
           transition={{ delay: 1, type: "spring", stiffness: 260, damping: 20 }}
-          className="fixed md:hidden bottom-6 left-1/2 w-[92vw] max-w-[400px] z-50"
+          className="fixed md:hidden bottom-2 left-1/2 w-[92vw] max-w-[400px] z-50"
         >
           <div
-            className={`flex items-center justify-between p-2 rounded-[2rem] border backdrop-blur-2xl shadow-2xl ${
+            className={`flex items-center justify-between rounded-[2rem] border backdrop-blur-2xl shadow-2xl ${
               isDark
                 ? "bg-zinc-950/80 border-white/10"
                 : "bg-white/90 border-black/5 shadow-zinc-200"
@@ -167,12 +167,12 @@ export default function Header({ isDark, setIsDark, theme }) {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleScrollTo(e, link.id)}
-                  className="relative flex flex-1 flex-col items-center justify-center py-3"
+                  className="relative flex flex-1 flex-col items-center justify-center py-2"
                 >
                   {isActive && (
                     <motion.div
                       layoutId="mobile-dock-bg"
-                      className="absolute inset-1 bg-emerald-500/10 rounded-2xl"
+                      className="absolute inset-1 bg-emerald-500/10 rounded-3xl"
                       transition={{
                         type: "spring",
                         bounce: 0.2,

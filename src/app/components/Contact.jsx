@@ -31,6 +31,7 @@ export default function Contact({ isDark, theme }) {
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
       className="py-20 px-6 max-w-4xl mx-auto text-center"
+      id="contact"
     >
       {/* Badge Reveal */}
       <motion.div

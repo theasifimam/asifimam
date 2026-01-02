@@ -8,6 +8,8 @@ import Skills from "./components/Skills";
 import Experience from "./components/ExperienceSection";
 import Footer from "./components/Footer";
 import About from "./components/About";
+import HeroSection2 from "./components/HeroOptions/HeroSection2";
+import HeroSection1 from "./components/HeroOptions/HeroSection1";
 // Import Footer and Skills similarly...
 
 export default function Portfolio() {
@@ -54,7 +56,7 @@ export default function Portfolio() {
       />
 
       <Header isDark={isDark} setIsDark={setIsDark} theme={theme} />
-      <Hero theme={theme} isDark={isDark} />
+      <HeroSection1 theme={theme} isDark={isDark} />
       <About theme={theme} isDark={isDark} />
       <Skills theme={theme} isDark={isDark} />
       <Experience theme={theme} isDark={isDark} />

@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import {
-  ChevronRight,
-  ChevronLeft,
   GraduationCap,
   Heart,
   Zap,
   History,
+  ArrowRight,
+  ArrowLeft,
+  Sparkles,
+  Camera,
 } from "lucide-react";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-export default function EnhancedAboutSlider({ isDark = true }) {
+export default function AboutRedesign({ isDark = true }) {
   const [active, setActive] = useState(0);
 
   const colors = {
-    bg: isDark ? "bg-[#09090b]" : "bg-white",
+    bg: isDark ? "bg-[#050505]" : "bg-zinc-50",
+    card: isDark ? "bg-zinc-900/50" : "bg-white",
     textMain: isDark ? "text-white" : "text-zinc-900",
     textMuted: isDark ? "text-zinc-500" : "text-zinc-400",
     border: isDark ? "border-white/10" : "border-black/5",
@@ -23,228 +26,225 @@ export default function EnhancedAboutSlider({ isDark = true }) {
   const aboutData = [
     {
       label: "Philosophy",
-      icon: <Zap size={14} />,
-      title: "Efficiency by Design",
+      icon: <Zap size={18} />,
+      title: "Core System",
+      highlight: "Philosophy",
+      image: "/asifimam.jpg", // Replace with your image paths
       content:
-        "I engineering digital systems where speed is the primary feature. Every line of code is audited for performance, ensuring sub-100ms response times.",
+        "Engineering digital systems where speed is the primary feature. Every line of code is audited for performance, ensuring sub-100ms response times.",
     },
     {
       label: "History",
-      icon: <History size={14} />,
-      title: "Architecture & Scale",
+      icon: <History size={18} />,
+      title: "Architecture",
+      highlight: "Scale",
+      image: "/asifimam3.jpg",
       content:
         "Transitioned from building interfaces to architecting scalable backend systems, specializing in modular React and distributed Node.js.",
     },
     {
       label: "Education",
-      icon: <GraduationCap size={14} />,
-      title: "Academic Foundation",
+      icon: <GraduationCap size={18} />,
+      title: "Academic",
+      highlight: "Foundation",
+      image: "/asifimam2.jpg",
       content:
-        "B.Tech. in Computer Science from Ganga Institute of Technology and Management. Specialized in Distributed Systems and UI/UX Design Principles.",
+        "B.Tech. in Computer Science from GITM. Specialized in Distributed Systems and UI/UX Design Principles.",
     },
     {
-      label: "Hobbies",
-      icon: <Heart size={14} />,
-      title: "Beyond the Code",
+      label: "Lifestyle",
+      icon: <Heart size={18} />,
+      title: "Human",
+      highlight: "Element",
+      image: "/asifimam.jpg",
       content:
-        "When I'm not at the terminal, you'll find me capturing street photography, exploring bouldering gyms, or experimenting with modular synthesizers.",
+        "When I'm not at the terminal, you'll find me capturing street photography, bouldering, or experimenting with modular synthesizers.",
     },
   ];
 
-  const nextSlide = () => setActive((prev) => (prev + 1) % aboutData.length);
-  const prevSlide = () =>
+  const next = () => setActive((prev) => (prev + 1) % aboutData.length);
+  const prev = () =>
     setActive((prev) => (prev - 1 + aboutData.length) % aboutData.length);
-
-  // Animation Variants
-  const textVariants = {
-    hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
-    visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-    exit: { opacity: 0, y: -20, filter: "blur(5px)" },
-  };
 
   return (
     <section
-      id="about"
-      className={`py-12 lg:py-24 px-4 sm:px-6 ${colors.bg} transition-colors duration-700 overflow-hidden`}
+      className={`relative min-h-screen flex items-center py-20 overflow-hidden ${colors.bg}`}
     >
-      <div className="max-w-7xl mx-auto">
-        {/* NAVIGATION HEADER */}
-        <div
-          className={`flex items-center justify-between mb-8 lg:mb-16 border-b ${colors.border} relative`}
+      {/* Dynamic Background Watermark */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 0.03, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0"
         >
-          <LayoutGroup>
-            <div className="flex gap-6 md:gap-12 overflow-x-auto pb-4 lg:pb-6 no-scrollbar snap-x touch-pan-x">
+          <h2 className="text-[10vw] font-black leading-none uppercase">
+            {aboutData[active].label}
+          </h2>
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+          {/* LEFT: TEXT CONTENT */}
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-4 mb-8">
+              <span
+                className={`text-xs font-mono font-bold tracking-[0.4em] ${colors.accent}`}
+              >
+                SECTION_0{active + 1}
+              </span>
+              <div className="flex gap-1">
+                {aboutData.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`h-1 transition-all duration-500 rounded-full ${
+                      active === i ? "w-8 bg-emerald-500" : "w-2 bg-zinc-800"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 30 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="space-y-8"
+              >
+                <h3
+                  className={`text-6xl sm:text-8xl font-black uppercase tracking-tighter leading-[0.85] ${colors.textMain}`}
+                >
+                  {aboutData[active].title} <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-700 italic">
+                    {aboutData[active].highlight}.
+                  </span>
+                </h3>
+
+                <p
+                  className={`text-lg sm:text-2xl leading-relaxed font-medium ${colors.textMuted} max-w-xl border-l-4 border-emerald-500/20 pl-6`}
+                >
+                  {aboutData[active].content}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* TAB NAVIGATION */}
+            <div className="mt-16 flex flex-wrap gap-3">
               {aboutData.map((item, i) => (
                 <button
                   key={i}
                   onClick={() => setActive(i)}
-                  className="relative flex flex-col items-start whitespace-nowrap snap-start group"
-                >
-                  <motion.span
-                    animate={{ color: active === i ? "#10b981" : "#71717a" }}
-                    className="flex items-center gap-2 text-[9px] md:text-[10px] font-mono font-bold tracking-[0.2em] uppercase mb-2"
-                  >
-                    {item.icon} 0{i + 1}
-                  </motion.span>
-                  <motion.span
-                    animate={{ opacity: active === i ? 1 : 0.3 }}
-                    className={`text-xs md:text-sm font-bold uppercase tracking-widest transition-all ${colors.textMain}`}
-                  >
-                    {item.label}
-                  </motion.span>
-                  {active === i && (
-                    <motion.div
-                      layoutId="underline"
-                      className="absolute -bottom-[1px] left-0 w-full h-0.5 bg-emerald-500 z-10"
-                      transition={{
-                        type: "spring",
-                        bounce: 0.2,
-                        duration: 0.6,
-                      }}
-                    />
-                  )}
-                </button>
-              ))}
-            </div>
-          </LayoutGroup>
-
-          <div className="hidden md:flex gap-4 pb-6">
-            {[
-              { icon: <ChevronLeft />, action: prevSlide },
-              { icon: <ChevronRight />, action: nextSlide },
-            ].map((btn, index) => (
-              <motion.button
-                key={index}
-                whileHover={{ scale: 1.1, borderColor: "#10b981" }}
-                whileTap={{ scale: 0.9 }}
-                onClick={btn.action}
-                className={`${colors.textMuted} transition-colors border ${colors.border} p-2 rounded-full hover:text-emerald-500`}
-              >
-                {React.cloneElement(btn.icon, { size: 20 })}
-              </motion.button>
-            ))}
-          </div>
-        </div>
-
-        {/* CONTENT GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          {/* TEXT CONTENT */}
-          <div className="lg:col-span-8 order-2 lg:order-1">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                transition={{
-                  staggerChildren: 0.1,
-                  duration: 0.5,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              >
-                <motion.h3
-                  variants={textVariants}
-                  className={`text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-6 ${colors.textMain}`}
-                >
-                  {aboutData[active].title.split(" ").slice(0, -1).join(" ")}{" "}
-                  <span className="text-emerald-500 italic block">
-                    {aboutData[active].title.split(" ").pop()}
-                  </span>
-                </motion.h3>
-
-                <motion.div
-                  variants={textVariants}
-                  className="flex gap-4 md:gap-8 items-start"
+                  className={`flex items-center gap-3 px-5 py-3 rounded-full border transition-all duration-300 ${
+                    active === i
+                      ? "border-emerald-500 bg-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.1)]"
+                      : "border-white/5 bg-white/5 hover:bg-white/10 text-zinc-500"
+                  }`}
                 >
                   <span
-                    className={`text-2xl md:text-4xl ${colors.accent} font-serif italic`}
+                    className={
+                      active === i ? "text-emerald-500" : "text-inherit"
+                    }
                   >
-                    &ldquo;
+                    {item.icon}
                   </span>
-                  <p
-                    className={`text-lg md:text-2xl lg:text-3xl font-medium leading-relaxed ${colors.textMuted} max-w-2xl`}
+                  <span
+                    className={`text-[11px] font-bold uppercase tracking-widest ${
+                      active === i ? "text-white" : "text-inherit"
+                    }`}
                   >
-                    {aboutData[active].content}
-                  </p>
-                </motion.div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* MOBILE NAVIGATION DOTS */}
-            <div className="flex gap-2 mt-10 md:hidden">
-              {aboutData.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  className="relative h-4 flex items-center"
-                >
-                  <div className={`h-1 rounded-full bg-zinc-800 w-4`} />
-                  {active === i && (
-                    <motion.div
-                      layoutId="activeDot"
-                      className="absolute inset-0 h-1 bg-emerald-500 rounded-full w-8"
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30,
-                      }}
-                    />
-                  )}
+                    {item.label}
+                  </span>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* IMAGE FRAME */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="lg:col-span-4 order-1 lg:order-2 relative group w-full max-w-sm mx-auto lg:max-w-none"
-          >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl lg:rounded-4xl bg-zinc-800 shadow-2xl">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={active}
-                  initial={{
-                    opacity: 0,
-                    filter: "grayscale(100%) contrast(1.2)",
-                  }}
-                  animate={{
-                    opacity: 1,
-                    filter: "grayscale(100%) contrast(1)",
-                  }}
-                  exit={{
-                    opacity: 0,
-                    filter: "grayscale(100%) brightness(0.5)",
-                  }}
-                  transition={{ duration: 0.7 }}
-                  src="/asifimam.jpg"
-                  alt="Portrait"
-                  className="object-cover w-full h-full"
-                />
-              </AnimatePresence>
+          {/* RIGHT: THE DYNAMIC IMAGE FRAME */}
+          <div className="lg:col-span-5">
+            <div className="relative group">
+              {/* Outer Decorative Elements */}
+              <div className="absolute -top-6 -right-6 w-32 h-32 border-t-2 border-r-2 border-emerald-500/20 rounded-tr-[40px] pointer-events-none" />
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b-2 border-l-2 border-emerald-500/20 rounded-bl-[40px] pointer-events-none" />
 
-              <div className="absolute inset-0 border-[8px] lg:border-[12px] rounded-3xl lg:rounded-4xl border-emerald-500/10 pointer-events-none" />
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className={`relative aspect-[4/5] rounded-[32px] overflow-hidden border ${colors.border} shadow-2xl bg-zinc-900`}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active}
+                    initial={{
+                      opacity: 0,
+                      scale: 1.1,
+                      filter: "grayscale(1) brightness(0.5)",
+                    }}
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      filter: "grayscale(0.5) brightness(1)",
+                    }}
+                    exit={{
+                      opacity: 0,
+                      scale: 0.95,
+                      filter: "grayscale(1) brightness(0)",
+                    }}
+                    transition={{ duration: 0.8, ease: "anticipate" }}
+                    className="absolute inset-0"
+                  >
+                    <img
+                      src={aboutData[active].image}
+                      alt={aboutData[active].label}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Dark Overlay for better text legibility on image labels */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  </motion.div>
+                </AnimatePresence>
 
-              <div className="absolute bottom-4 left-6 right-6 pointer-events-none overflow-hidden">
-                <motion.span
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.8, ease: "circOut" }}
-                  className="text-xl md:text-3xl text-white font-black uppercase tracking-widest block drop-shadow-lg"
-                >
-                  <span className={colors.accent}>Asif</span> Imam
-                </motion.span>
-              </div>
+                {/* Floating Image Metadata */}
+                <div className="absolute bottom-8 left-8 right-8 z-20">
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-1">
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        key={`label-${active}`}
+                        className="flex items-center gap-2"
+                      >
+                        <Camera size={12} className="text-emerald-500" />
+                        <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-[0.3em]">
+                          captured_moment
+                        </span>
+                      </motion.div>
+                      <h4 className="text-2xl font-black text-white uppercase tracking-tight">
+                        Asif Imam
+                      </h4>
+                    </div>
+
+                    <div className="flex gap-2">
+                      <button
+                        onClick={prev}
+                        className="p-3 rounded-full bg-white/10 hover:bg-emerald-500 transition-colors backdrop-blur-md"
+                      >
+                        <ArrowLeft size={16} className="text-white" />
+                      </button>
+                      <button
+                        onClick={next}
+                        className="p-3 rounded-full bg-white/10 hover:bg-emerald-500 transition-colors backdrop-blur-md"
+                      >
+                        <ArrowRight size={16} className="text-white" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
-
-            <motion.div
-              animate={{ rotate: active * 90 }}
-              className={`hidden sm:block absolute -bottom-4 -right-4 w-24 h-24 rounded-3xl border-r-2 border-b-2 ${colors.border} -z-10`}
-              transition={{ type: "spring", stiffness: 100 }}
-            />
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
