@@ -121,7 +121,7 @@ export default function AboutRedesign({ isDark = true }) {
                   className={`text-5xl sm:text-8xl font-black uppercase tracking-tighter leading-[0.85] ${colors.textMain}`}
                 >
                   {aboutData[active].title} <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-700 italic">
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-emerald-700 italic">
                     {aboutData[active].highlight}.
                   </span>
                 </h3>
@@ -169,12 +169,12 @@ export default function AboutRedesign({ isDark = true }) {
           <div className="lg:col-span-5">
             <div className="relative group">
               {/* Outer Decorative Elements */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 border-t-2 border-r-2 border-emerald-500/20 rounded-tr-[40px] pointer-events-none" />
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b-2 border-l-2 border-emerald-500/20 rounded-bl-[40px] pointer-events-none" />
+              <div className="absolute -top-6 -right-6 w-32 h-32 border-t-2 border-r-2 border-emerald-500/20 rounded-tr-[65px] pointer-events-none" />
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b-2 border-l-2 border-emerald-500/20 rounded-bl-[65px] pointer-events-none" />
 
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className={`relative aspect-[4/5] rounded-[32px] overflow-hidden border ${colors.border} shadow-2xl bg-zinc-900`}
+                className={`relative aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl bg-zinc-900`}
               >
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -203,7 +203,7 @@ export default function AboutRedesign({ isDark = true }) {
                       className="w-full h-full object-cover"
                     />
                     {/* Dark Overlay for better text legibility on image labels */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                   </motion.div>
                 </AnimatePresence>
 

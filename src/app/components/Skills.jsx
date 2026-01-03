@@ -7,33 +7,39 @@ export default function Skills({ isDark }) {
       title: "Frontend Architecture",
       desc: "Building immersive user interfaces",
       icon: <Layers className="w-6 h-6" />,
-      skills: ["React", "Next.js 14", "Tailwind CSS", "Framer Motion"],
+      skills: [
+        "React.js",
+        "Next.js 14",
+        "Tailwind CSS",
+        "React Query",
+        "Redux Toolkit",
+      ],
       size: "md:col-span-2",
       gradient: "from-emerald-500/20 to-blue-500/20",
-    },
-    {
-      title: "Backend",
-      desc: "Scalable systems",
-      icon: <Cpu className="w-6 h-6" />,
-      skills: ["Node.js", "PostgreSQL", "Prisma"],
-      size: "md:col-span-1",
-      gradient: "from-purple-500/20 to-pink-500/20",
-    },
-    {
-      title: "Core Stack",
-      desc: "Fundamental languages",
-      icon: <Code2 className="w-6 h-6" />,
-      skills: ["TypeScript", "JavaScript", "Python", "Go"],
-      size: "md:col-span-1",
-      gradient: "from-orange-500/20 to-red-500/20",
     },
     {
       title: "Deployment & Ops",
       desc: "Cloud infrastructure",
       icon: <Globe className="w-6 h-6" />,
-      skills: ["AWS", "Docker", "Vercel", "CI/CD"],
-      size: "md:col-span-2",
+      skills: ["Docker", "Vercel", "CI/CD", "Git", "Github Actions"],
+      size: "md:col-span-1",
+      gradient: "from-orange-500/20 to-red-500/20",
+    },
+    {
+      title: "Core Stack",
+      desc: "Fundamental languages",
+      icon: <Code2 className="w-6 h-6" />,
+      skills: ["TypeScript", "JavaScript", "Node.js", "React.js", "Next.js"],
+      size: "md:col-span-1",
       gradient: "from-cyan-500/20 to-emerald-500/20",
+    },
+    {
+      title: "Backend",
+      desc: "Scalable systems",
+      icon: <Cpu className="w-6 h-6" />,
+      skills: ["Node.js", "MySQL", "MondgoDB", "Express.js"],
+      size: "md:col-span-2",
+      gradient: "from-purple-500/20 to-pink-500/20",
     },
   ];
 
@@ -72,7 +78,7 @@ export default function Skills({ isDark }) {
             isDark ? "text-white" : "text-black"
           }`}
         >
-          MY{" "}
+          MY
           <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-cyan-500 italic">
             ARSENAL
           </span>
@@ -142,7 +148,7 @@ export default function Skills({ isDark }) {
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.4 + index * 0.05 }}
-                      className={`text-xs font-medium px-4 py-2 rounded-xl backdrop-blur-md border transition-all
+                      className={`text-xs font-medium px-4 py-2 rounded-full backdrop-blur-md border transition-all
                         ${
                           isDark
                             ? "bg-white/5 border-white/10 text-zinc-300 group-hover:bg-emerald-500 group-hover:text-black group-hover:border-emerald-500"

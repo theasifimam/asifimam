@@ -104,7 +104,7 @@ export default function HeroSection1({ isDark = true }) {
             transition={{ delay: 0.1 }}
           >
             <h2
-              className={`text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tighter ${theme.text} mb-6`}
+              className={`text-5xl sm:text-7xl lg:text-[7.5rem] font-extrabold tracking-tighter ${theme.text} mb-6`}
             >
               FULL STACK <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-emerald-700">

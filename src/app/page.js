@@ -1,14 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
-import Hero from "./components/HeroSection";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Skills from "./components/Skills";
 import Experience from "./components/ExperienceSection";
 import Footer from "./components/Footer";
 import About from "./components/About";
-import HeroSection2 from "./components/HeroOptions/HeroSection2";
 import HeroSection1 from "./components/HeroOptions/HeroSection1";
 // Import Footer and Skills similarly...
 

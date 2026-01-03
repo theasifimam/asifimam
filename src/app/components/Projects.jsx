@@ -10,7 +10,7 @@ export default function Projects({ isDark, theme }) {
 
   const projects = [
     {
-      title: "Hyper-Realistic Social Media App",
+      title: "Mazlis - Social Media App",
       category: "Full Stack / MERN",
       description:
         "Built a social media app using React.js, Node.js, Express.js, MongoDB, and Mongoose. Features includes user authentication, post creation, and comment functionality. Implemented a robust data synchronization system.",
@@ -44,7 +44,7 @@ export default function Projects({ isDark, theme }) {
       ],
       tech: ["React.js", "Chart.js", "Express", "Node.js", "SQL"],
       link: "https://sabkimandi.com/",
-      images: ["/assets/hrms.png"],
+      images: ["/assets/skm.png", "/assets/skm2.png", "/assets/skm3.png"],
       github: "https://github.com/volansinfo/sabKiMandiAdmin.git",
     },
     {
@@ -208,11 +208,11 @@ export default function Projects({ isDark, theme }) {
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.3 + idx * 0.1 }}
-                    className={`p-3 md:p-4 ${
+                    className={`py-2 px-4 md:px-6 md:py-3 ${
                       isDark
                         ? "bg-zinc-900 border-zinc-800"
                         : "bg-white border-zinc-200 shadow-sm"
-                    } border rounded-2xl md:rounded-3xl group-hover:border-emerald-500/30 transition-colors`}
+                    } border rounded-2xl md:rounded-full group-hover:border-emerald-500/30 transition-colors`}
                   >
                     <div className="text-[8px] md:text-[10px] font-mono opacity-40 uppercase font-bold tracking-tighter">
                       KPI
