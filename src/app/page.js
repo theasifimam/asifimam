@@ -7,7 +7,7 @@ import Skills from "./components/Skills";
 import Experience from "./components/ExperienceSection";
 import Footer from "./components/Footer";
 import About from "./components/About";
-import HeroSection1 from "./components/HeroOptions/HeroSection1";
+import HeroSection from "./components/HeroOptions/HeroSection";
 // Import Footer and Skills similarly...
 
 export default function Portfolio() {
@@ -45,16 +45,14 @@ export default function Portfolio() {
       <div
         className="fixed inset-0 pointer-events-none opacity-30"
         style={{
-          background: `radial-gradient(1000px circle at ${mousePos.x}px ${
-            mousePos.y
-          }px, ${
-            isDark ? "rgba(16, 185, 129, 0.05)" : "rgba(16, 185, 129, 0.1)"
-          }, transparent 70%)`,
+          background: `radial-gradient(1000px circle at ${mousePos.x}px ${mousePos.y
+            }px, ${isDark ? "rgba(16, 185, 129, 0.05)" : "rgba(16, 185, 129, 0.1)"
+            }, transparent 70%)`,
         }}
       />
 
       <Header isDark={isDark} setIsDark={setIsDark} theme={theme} />
-      <HeroSection1 theme={theme} isDark={isDark} />
+      <HeroSection theme={theme} isDark={isDark} />
       <About theme={theme} isDark={isDark} />
       <Skills theme={theme} isDark={isDark} />
       <Experience theme={theme} isDark={isDark} />
