@@ -82,7 +82,7 @@ export default function SkillsHeroUltimate({ isDark = true }) {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className={`relative min-h-screen w-full flex items-center justify-center overflow-hidden ${theme.bg} perspective-[2000px] transition-colors duration-500`}
+      className={`relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-24 lg:pt-0 ${theme.bg} perspective-[2000px] transition-colors duration-500`}
       id="home"
     >
       {/* --- ATMOSPHERE LAYERS --- */}
@@ -170,7 +170,7 @@ export default function SkillsHeroUltimate({ isDark = true }) {
               <button
                 onClick={handleExecute}
                 disabled={isExecuting}
-                className={`relative rounded-full px-8 py-4 bg-emerald-500 text-white font-bold uppercase tracking-widest text-xs rounded-none hover:bg-emerald-400 active:scale-95 transition-all ${theme.accentGlow}`}
+                className={`relative rounded-full px-8 py-4 bg-emerald-500 text-white font-bold uppercase tracking-widest text-xs hover:bg-emerald-400 active:scale-95 transition-all ${theme.accentGlow}`}
               >
                 {isExecuting ? "Processing..." : "Execute"}
               </button>
