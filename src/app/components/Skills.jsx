@@ -1,163 +1,145 @@
-import { Code2, Cpu, Globe, Layers, Sparkles } from "lucide-react";
+import React from "react";
+import { 
+  Code2, 
+  Cpu, 
+  Globe, 
+  Layers, 
+  Sparkles, 
+  ArrowUpRight 
+} from "lucide-react";
 import { motion } from "framer-motion";
 
+/**
+ * Minimal Skills / Stack Section
+ * Features a refined bento grid with subtle mesh gradients and premium typography.
+ */
 export default function Skills({ isDark }) {
   const categories = [
     {
       title: "Frontend Architecture",
-      desc: "Building immersive user interfaces",
-      icon: <Layers className="w-6 h-6" />,
-      skills: [
-        "React.js",
-        "Next.js 14",
-        "Tailwind CSS",
-        "React Query",
-        "Redux Toolkit",
-      ],
+      desc: "Immersive UI/UX & State",
+      icon: <Layers size={22} />,
+      skills: ["React.js", "Next.js", "Tailwind CSS", "React Query", "Redux"],
       size: "md:col-span-2",
-      gradient: "from-emerald-500/20 to-blue-500/20",
+      gradient: "from-emerald-500/10 to-blue-500/10",
     },
     {
-      title: "Deployment & Ops",
-      desc: "Cloud infrastructure",
-      icon: <Globe className="w-6 h-6" />,
-      skills: ["Docker", "Vercel", "CI/CD", "Git", "Github Actions"],
+      title: "DevOps",
+      desc: "Cloud & CI/CD",
+      icon: <Globe size={22} />,
+      skills: ["Docker", "Vercel", "Github Actions", "Git"],
       size: "md:col-span-1",
-      gradient: "from-orange-500/20 to-red-500/20",
+      gradient: "from-orange-500/10 to-red-500/10",
     },
     {
       title: "Core Stack",
-      desc: "Fundamental languages",
-      icon: <Code2 className="w-6 h-6" />,
-      skills: ["TypeScript", "JavaScript", "Node.js", "React.js", "Next.js"],
+      desc: "Languages & Frameworks",
+      icon: <Code2 size={22} />,
+      skills: ["TypeScript", "JavaScript", "Node.js", "Next.js"],
       size: "md:col-span-1",
-      gradient: "from-cyan-500/20 to-emerald-500/20",
+      gradient: "from-cyan-500/10 to-emerald-500/10",
     },
     {
-      title: "Backend",
-      desc: "Scalable systems",
-      icon: <Cpu className="w-6 h-6" />,
-      skills: ["Node.js", "MySQL", "MondgoDB", "Express.js"],
+      title: "Backend Systems",
+      desc: "Scalable Infrastructure",
+      icon: <Cpu size={22} />,
+      skills: ["Node.js", "Express", "MySQL", "MongoDB", "Auth"],
       size: "md:col-span-2",
-      gradient: "from-purple-500/20 to-pink-500/20",
+      gradient: "from-purple-500/10 to-pink-500/10",
     },
   ];
 
-  // Animation variants for the entrance
+  const colors = {
+    textPrimary: isDark ? "text-white" : "text-zinc-950",
+    textSecondary: isDark ? "text-zinc-500" : "text-zinc-400",
+    border: isDark ? "border-white/5" : "border-black/5",
+    cardBg: isDark ? "bg-zinc-900/40" : "bg-zinc-50",
+    accent: "text-emerald-500",
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 },
+      transition: { staggerChildren: 0.1 },
     },
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
     visible: {
-      opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+      opacity: 1,
+      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
   return (
-    <section id="skills" className="py-24 px-4 sm:px-6 max-w-7xl mx-auto">
-      {/* Header */}
+    <section id="skills" className="py-32 px-6 max-w-7xl mx-auto">
+      {/* Refined Header */}
       <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="flex flex-col items-start mb-16"
+        className="flex flex-col items-center text-center mb-20"
       >
-        <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase border border-emerald-500/30 text-emerald-500 mb-4 bg-emerald-500/5">
-          Expertise
-        </span>
-        <h2
-          className={`text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none ${
-            isDark ? "text-white" : "text-black"
-          }`}
-        >
-          MY
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-cyan-500 italic">
-            ARSENAL
+        <div className="flex items-center gap-3 mb-6">
+          <div className="h-px w-6 bg-emerald-500/50" />
+          <span className={`text-[10px] font-mono font-bold tracking-[0.5em] uppercase ${colors.accent}`}>
+            Section_02
           </span>
+          <div className="h-px w-6 bg-emerald-500/50" />
+        </div>
+        <h2 className={`text-5xl md:text-7xl font-black tracking-tighter ${colors.textPrimary}`}>
+          Technological <span className="text-emerald-500 italic">Stack.</span>
         </h2>
       </motion.div>
 
-      {/* Bento Grid */}
+      {/* Reimagined Bento Grid */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-4"
+        className="grid grid-cols-1 md:grid-cols-3 gap-6"
       >
         {categories.map((cat, i) => (
           <motion.div
             key={i}
-            variants={cardVariants}
-            whileTap={{ scale: 0.98 }}
-            className={`group relative overflow-hidden rounded-4xl border transition-all duration-500 p-8
-              ${cat.size}
-              ${
-                isDark
-                  ? "bg-zinc-900/40 border-white/5 hover:border-emerald-500/50"
-                  : "bg-zinc-50 border-black/5 hover:border-emerald-500/30"
-              }
-            `}
+            variants={itemVariants}
+            className={`group relative overflow-hidden rounded-[3rem] border transition-all duration-700 p-10 flex flex-col justify-between h-full ${cat.size} ${colors.border} ${colors.cardBg} hover:border-emerald-500/40`}
           >
-            {/* RESTORED: Original Mesh Gradient Background */}
-            <div
-              className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-linear-to-br ${cat.gradient} blur-3xl`}
-            />
+            {/* Subtle Gradient Backdrop */}
+            <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-gradient-to-br ${cat.gradient} blur-3xl`} />
 
-            <div className="relative z-10 flex flex-col h-full">
+            <div className="relative z-10">
               <div className="flex justify-between items-start mb-12">
-                {/* RESTORED: Original Scale-up on Icon */}
-                <div
-                  className={`p-4 rounded-2xl ${
-                    isDark ? "bg-zinc-800" : "bg-white shadow-sm"
-                  } group-hover:scale-110 transition-transform duration-500`}
-                >
+                <div className={`p-4 rounded-2xl ${isDark ? "bg-white/5" : "bg-black/5"} group-hover:scale-110 transition-transform duration-500 ${colors.accent}`}>
                   {cat.icon}
                 </div>
-                <Sparkles
-                  className={`w-5 h-5 opacity-0 group-hover:opacity-100 transition-all ${
-                    isDark ? "text-zinc-700" : "text-zinc-300"
-                  }`}
-                />
+                <ArrowUpRight size={20} className="text-zinc-700/30 group-hover:text-emerald-500 transition-colors" />
               </div>
 
-              <div className="mt-auto">
-                <p className="text-xs font-bold text-emerald-500 tracking-widest uppercase mb-1">
+              <div>
+                <p className={`text-[10px] font-mono font-bold uppercase tracking-[0.2em] mb-2 ${colors.accent}`}>
                   {cat.desc}
                 </p>
-                <h3
-                  className={`text-2xl font-black tracking-tight mb-6 ${
-                    isDark ? "text-white" : "text-black"
-                  }`}
-                >
+                <h3 className={`text-3xl font-black tracking-tight mb-8 ${colors.textPrimary}`}>
                   {cat.title}
                 </h3>
 
                 <div className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill, index) => (
-                    <motion.span
-                      key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.4 + index * 0.05 }}
-                      className={`text-xs font-medium px-4 py-2 rounded-full backdrop-blur-md border transition-all
-                        ${
-                          isDark
-                            ? "bg-white/5 border-white/10 text-zinc-300 group-hover:bg-emerald-500 group-hover:text-black group-hover:border-emerald-500"
-                            : "bg-black/5 border-black/5 text-zinc-600 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500"
-                        }
-                      `}
+                  {cat.skills.map((skill, idx) => (
+                    <span
+                      key={idx}
+                      className={`text-[10px] font-bold px-4 py-2 rounded-full border transition-all duration-300 ${
+                        isDark 
+                          ? "bg-white/5 border-white/5 text-zinc-400 group-hover:border-emerald-500/30 group-hover:text-white" 
+                          : "bg-black/5 border-black/5 text-zinc-500 group-hover:border-emerald-500/30 group-hover:text-black"
+                      }`}
                     >
                       {skill}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
               </div>
@@ -168,3 +150,4 @@ export default function Skills({ isDark }) {
     </section>
   );
 }
+

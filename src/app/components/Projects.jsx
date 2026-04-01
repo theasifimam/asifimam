@@ -1,227 +1,163 @@
 "use client";
 
+import React, { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { useState } from "react";
-import { motion } from "framer-motion"; // Added
+import { motion } from "framer-motion";
 import { ProjectModal } from "./ProjectModal";
 
-export default function Projects({ isDark, theme }) {
+/**
+ * Minimal Projects Section
+ * Clean bento grid featuring high-impact engineering work.
+ */
+export default function Projects({ isDark }) {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const projects = [
     {
-      title: "Mazlis - Social Media App",
+      title: "Mazlis",
       category: "Full Stack / MERN",
-      description:
-        "Built a social media app using React.js, Node.js, Express.js, MongoDB, and Mongoose. Features includes user authentication, post creation, and comment functionality. Implemented a robust data synchronization system.",
-      metrics: [
-        "User Authentication",
-        "Posts, Comments, Replies",
-        "99.9% Uptime",
-        "Chat System",
-      ],
-      tech: ["Next.js", "Node.js", "Express", "MongoDB", "Redux Toolkit"],
+      description: "A high-performance social platform with real-time synchronization and robust security architecture.",
+      metrics: ["User Auth", "Real-time Chat", "99.9% Uptime"],
+      tech: ["Next.js", "Node.js", "Express", "MongoDB"],
       link: "https://mazlis.com",
-      images: [
-        "/assets/mazlis.png",
-        "/assets/mazlis2.png",
-        "/assets/mazlis3.png",
-        "/assets/mazlis4.png",
-        "/assets/mazlis5.png",
-      ],
+      images: ["/assets/mazlis.png", "/assets/mazlis2.png", "/assets/mazlis3.png"],
       github: "https://github.com/theasifimam/next-mazlis",
     },
     {
-      title: "SabkiMandi Dashboard",
+      title: "SabkiMandi",
       category: "Frontend Architecture",
-      description:
-        "Built a real-time dashboard using React.js and Chart.js. Implemented a robust data synchronization system. Implemented a bulk product update, add, delete and get using CSV or Excel files.",
-      metrics: [
-        "Real-time Sync",
-        "99.9% Uptime",
-        "CSV/Excel Support",
-        "API Integration",
-      ],
-      tech: ["React.js", "Chart.js", "Express", "Node.js", "SQL"],
+      description: "Real-time data dashboard for supply chain management, featuring advanced visualization and bulk processing.",
+      metrics: ["Real-time Sync", "Bulk Processing", "Chart.js"],
+      tech: ["React.js", "Chart.js", "Express", "SQL"],
       link: "https://sabkimandi.com/",
       images: ["/assets/skm.png", "/assets/skm2.png", "/assets/skm3.png"],
-      github: "https://github.com/volansinfo/sabKiMandiAdmin.git",
+      github: "https://github.com/volansinfo/sabKiMandiAdmin",
     },
     {
       title: "HRMS Platform",
-      category: "Frontend / API Integration",
-      description:
-        "Built a HRMS platform using React.js and Node.js. Implemented a bulk user update, add, delete and get using CSV or Excel files. Implemented a robust data synchronization system.",
-      metrics: [
-        "200ms Response",
-        "99.9% Uptime",
-        "CSV/Excel Support",
-        "API Integration",
-      ],
-      tech: ["Express", "Node.js", "MongoDB", "AWS"],
+      category: "Enterprise Solution",
+      description: "Modular Human Resource Management System with custom API integrations and data-heavy workflows.",
+      metrics: ["AWS Integrated", "CSV support", "Modular UI"],
+      tech: ["React", "Node.js", "MongoDB", "AWS"],
       link: "https://hrms.volansinfo.com/",
-      images: [
-        "/assets/hrms.png",
-        "/assets/hrms2.png",
-        "/assets/hrms3.png",
-        "/assets/hrms4.png",
-      ],
-      github: "https://github.com/volansinfo/hrmsfrontend.git",
+      images: ["/assets/hrms.png", "/assets/hrms2.png", "/assets/hrms3.png"],
+      github: "https://github.com/volansinfo/hrmsfrontend",
     },
     {
-      title: "Recordified Platform",
-      category: "Real-time MERN",
-      description:
-        "A kind of Hospital management system that include features like online consultation, appointment scheduling, patient management, billing, and inventory management. Implemented a robust data synchronization system.",
-      metrics: ["Zero-Conflict sync", "Offline Support"],
-      tech: ["React", "Redux", "Node.js", "SQL"],
+      title: "Recordified",
+      category: "Healthcare Architecture",
+      description: "Healthcare management system focused on appointment scheduling and encrypted patient records.",
+      metrics: ["Encrypted Data", "Zero-Conflict Sync"],
+      tech: ["React", "Redux", "SQL", "Cloud"],
       link: "https://recordified.com/",
-      images: [
-        "/assets/recordified.png",
-        "/assets/recordified2.png",
-        "/assets/recordified.png",
-      ],
-      github: "https://github.com/volansinfo/recordifyWeb.git",
+      images: ["/assets/recordified.png", "/assets/recordified2.png"],
+      github: "https://github.com/volansinfo/recordifyWeb",
     },
   ];
-  // Container variants to stagger the cards
+
+  const colors = {
+    textPrimary: isDark ? "text-white" : "text-zinc-950",
+    textSecondary: isDark ? "text-zinc-500" : "text-zinc-500",
+    border: isDark ? "border-white/5" : "border-black/5",
+    cardBg: isDark ? "bg-zinc-900/40" : "bg-zinc-50",
+    accent: "text-emerald-500",
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.15 },
     },
   };
 
-  // Card variants for entry
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
     visible: {
-      opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier for a "slick" feel
-      },
+      opacity: 1,
+      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
   return (
-    <section
-      id="projects"
-      className="py-16 md:py-32 px-4 md:px-6 max-w-7xl mx-auto"
-    >
-      {/* Header Section with Reveal */}
+    <section id="projects" className="py-32 px-6 max-w-7xl mx-auto">
+      {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-6"
+        className="flex flex-col items-center text-center mb-20"
       >
-        <div className="max-w-xl">
-          <h2 className="text-3xl md:text-6xl font-black tracking-tighter mb-4 md:mb-6 underline decoration-emerald-500 decoration-4 italic">
-            FEATURED WORK
-          </h2>
-          <p className={`${theme.textMuted} text-sm md:text-base`}>
-            High-concurrency performance and core web vitals focus.
-          </p>
+        <div className="flex items-center gap-3 mb-6">
+          <div className="h-px w-6 bg-emerald-500/50" />
+          <span className={`text-[10px] font-mono font-bold tracking-[0.5em] uppercase ${colors.accent}`}>
+            Section_04
+          </span>
+          <div className="h-px w-6 bg-emerald-500/50" />
         </div>
-
-        <div className="flex flex-col items-start md:items-end">
-          <motion.div
-            initial={{ scale: 0.5, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
-            className={`text-3xl md:text-4xl font-mono ${theme.accent} font-black tracking-tighter`}
-          >
-            04+
-          </motion.div>
-          <div className="text-[10px] md:text-xs uppercase font-mono opacity-50 tracking-widest">
-            Deployed Projects
-          </div>
-        </div>
+        <h2 className={`text-5xl md:text-7xl font-black tracking-tighter ${colors.textPrimary}`}>
+          Selected <span className="text-emerald-500 italic">Work.</span>
+        </h2>
       </motion.div>
 
-      {/* Grid with Staggered Motion */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
       >
-        {projects.map((p, i) => (
+        {projects.map((project, i) => (
           <motion.div
             key={i}
-            variants={cardVariants}
-            whileHover={{ y: -8 }} // Enhanced hover lift
-            whileTap={{ scale: 0.98 }}
-            className={`${theme.card} border p-1.5 md:p-2 rounded-4xl md:rounded-[3rem] group cursor-pointer transition-all`}
-            onClick={() => setSelectedProject(p)}
+            variants={itemVariants}
+            className={`group relative rounded-[3rem] border ${colors.border} ${colors.cardBg} overflow-hidden hover:border-emerald-500/30 transition-all duration-700 cursor-pointer`}
+            onClick={() => setSelectedProject(project)}
           >
-            <div
-              className={`${theme.cardInner} rounded-[1.8rem] md:rounded-[2.7rem] p-6 md:p-8 h-full flex flex-col relative overflow-hidden`}
-            >
-              {/* Internal Hover Glow */}
-              <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            {/* Visual Preview Area */}
+            <div className={`aspect-video overflow-hidden border-b ${colors.border} bg-zinc-900 relative`}>
+               <img 
+                 src={project.images[0]} 
+                 alt={project.title} 
+                 className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-out"
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+               
+               <div className="absolute top-8 right-8 p-3 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                 <ArrowUpRight size={20} />
+               </div>
+            </div>
 
-              <div className="flex justify-between items-start mb-6 md:mb-10 relative z-10">
-                <span
-                  className={`text-[9px] md:text-[10px] font-black font-mono px-3 py-1 md:px-4 md:py-1.5 ${
-                    isDark
-                      ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20"
-                      : "bg-emerald-50 text-emerald-600 border-emerald-100"
-                  } rounded-full border uppercase tracking-widest`}
-                >
-                  {p.category}
+            {/* Content Area */}
+            <div className="p-10">
+              <div className="flex items-center justify-between mb-4">
+                <span className={`text-[10px] font-mono font-bold uppercase tracking-[0.2em] ${colors.accent}`}>
+                  {project.category}
                 </span>
-
-                {/* Restore and animate the Arrow button */}
-                <motion.div
-                  whileHover={{ rotate: 45 }}
-                  className={`p-2.5 md:p-3 ${
-                    isDark ? "bg-zinc-800" : "bg-white border border-zinc-200"
-                  } rounded-full group-hover:bg-emerald-500 group-hover:text-black transition-all`}
-                >
-                  <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5" />
-                </motion.div>
+                <div className="flex gap-2">
+                   {project.tech.map((t, idx) => (
+                     <span key={idx} className={`text-[8px] font-bold uppercase tracking-widest ${colors.textSecondary} opacity-40 group-hover:opacity-100 transition-opacity`}>
+                       {t}
+                     </span>
+                   ))}
+                </div>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 italic tracking-tight relative z-10">
-                {p.title}
+              <h3 className={`text-3xl font-black tracking-tight mb-4 ${colors.textPrimary} group-hover:text-emerald-500 transition-colors`}>
+                {project.title}
               </h3>
-
-              <p
-                className={`${theme.textMuted} text-sm md:text-base mb-6 md:mb-8 grow leading-relaxed relative z-10`}
-              >
-                {p.description}
+              
+              <p className={`text-base leading-relaxed ${colors.textSecondary} mb-8 line-clamp-2`}>
+                {project.description}
               </p>
 
-              {/* KPI Grid with individual pop-in */}
-              <div className="grid grid-cols-2 gap-3 md:gap-4 mb-2 relative z-10">
-                {p.metrics.map((m, idx) => (
-                  <motion.div
-                    key={m}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3 + idx * 0.1 }}
-                    className={`py-2 px-4 md:px-6 md:py-3 ${
-                      isDark
-                        ? "bg-zinc-900 border-zinc-800"
-                        : "bg-white border-zinc-200 shadow-sm"
-                    } border rounded-2xl md:rounded-full group-hover:border-emerald-500/30 transition-colors`}
-                  >
-                    <div className="text-[8px] md:text-[10px] font-mono opacity-40 uppercase font-bold tracking-tighter">
-                      KPI
-                    </div>
-                    <div className="text-xs md:text-sm font-black truncate">
-                      {m}
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="flex gap-4">
+                 {project.metrics.map((m, idx) => (
+                   <span key={idx} className={`text-[9px] font-mono font-bold uppercase tracking-wider ${colors.textSecondary} opacity-60`}>
+                     • {m}
+                   </span>
+                 ))}
               </div>
             </div>
           </motion.div>
@@ -233,8 +169,8 @@ export default function Projects({ isDark, theme }) {
         isOpen={!!selectedProject}
         onClose={() => setSelectedProject(null)}
         isDark={isDark}
-        theme={theme}
       />
     </section>
   );
 }
+

@@ -40,7 +40,7 @@ export default function Portfolio() {
 
   return (
     <div
-      className={`min-h-screen ${theme.bg} ${theme.text} font-sans transition-colors duration-500`}
+      className={`min-h-screen ${isDark ? "bg-[#050505]" : "bg-white"} ${isDark ? "text-white" : "text-black"} font-sans transition-colors duration-500`}
     >
       <div
         className="fixed inset-0 pointer-events-none opacity-30"
@@ -51,14 +51,14 @@ export default function Portfolio() {
         }}
       />
 
-      <Header isDark={isDark} setIsDark={setIsDark} theme={theme} />
-      <HeroSection theme={theme} isDark={isDark} />
-      <About theme={theme} isDark={isDark} />
-      <Skills theme={theme} isDark={isDark} />
-      <Experience theme={theme} isDark={isDark} />
-      <Projects isDark={isDark} theme={theme} />
-      <Contact isDark={isDark} theme={theme} />
-      <Footer isDark={isDark} theme={theme} />
+      <Header isDark={isDark} setIsDark={setIsDark} />
+      <HeroSection isDark={isDark} />
+      <About isDark={isDark} />
+      <Skills isDark={isDark} />
+      <Experience isDark={isDark} />
+      <Projects isDark={isDark} />
+      <Contact isDark={isDark} />
+      <Footer isDark={isDark} />
     </div>
   );
 }

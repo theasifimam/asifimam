@@ -1,114 +1,115 @@
-import { Mail, MessageCircle, Phone } from "lucide-react";
+import React from "react";
+import { Mail, MessageCircle, Phone, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function Contact({ isDark, theme }) {
-  // Animation variants for the container to stagger children
+/**
+ * Minimal Contact Section
+ * Features a serene design with clear calls to action and premium animations.
+ */
+export default function Contact({ isDark }) {
+  const colors = {
+    textPrimary: isDark ? "text-white" : "text-zinc-950",
+    textSecondary: isDark ? "text-zinc-500" : "text-zinc-500",
+    border: isDark ? "border-white/5" : "border-black/5",
+    accent: "text-emerald-500",
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
-  // Animation variants for individual elements
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { type: "spring", stiffness: 100 },
+      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
   return (
-    <motion.section
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={containerVariants}
-      className="py-20 px-6 max-w-4xl mx-auto text-center"
-      id="contact"
-    >
-      {/* Badge Reveal */}
+    <section id="contact" className="py-32 px-6 max-w-5xl mx-auto text-center">
       <motion.div
-        variants={itemVariants}
-        className="inline-block p-1 bg-linear-to-r from-emerald-500/50 to-cyan-500/50 rounded-full mb-10"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
       >
-        <div
-          className={`${theme.bg} px-6 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-widest`}
+        {/* Section Header */}
+        <motion.div variants={itemVariants} className="flex flex-col items-center mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-px w-6 bg-emerald-500/50" />
+            <span className={`text-[10px] font-mono font-bold tracking-[0.5em] uppercase ${colors.accent}`}>
+              Section_05
+            </span>
+            <div className="h-px w-6 bg-emerald-500/50" />
+          </div>
+          <h2 className={`text-5xl md:text-7xl font-black tracking-tighter ${colors.textPrimary}`}>
+            Let's <span className="text-emerald-500 italic">Connect.</span>
+          </h2>
+        </motion.div>
+
+        <motion.p 
+          variants={itemVariants}
+          className={`text-lg md:text-2xl font-medium leading-relaxed ${colors.textSecondary} mb-16 max-w-2xl mx-auto`}
         >
-          Open for high-impact contracts
-        </div>
+          Currently available for high-impact software engineering roles and strategic technical consultations.
+        </motion.p>
+
+        <motion.div 
+          variants={itemVariants}
+          className="flex flex-wrap justify-center gap-6"
+        >
+          {/* Primary CTA */}
+          <motion.a
+            href="mailto:asifimam999@gmail.com"
+            whileHover={{ y: -4 }}
+            whileTap={{ scale: 0.95 }}
+            className={`px-12 py-5 rounded-full font-bold text-[10px] uppercase tracking-[0.2em] transition-all duration-300 bg-emerald-500 text-black hover:bg-emerald-400 shadow-[0_15px_30px_-10px_rgba(16,185,129,0.3)] flex items-center gap-3`}
+          >
+            <Mail size={16} /> Send Email
+          </motion.a>
+
+          {/* Secondary CTAs */}
+          <div className="flex gap-4">
+             <motion.a
+              href="https://wa.me/919911471995"
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.95 }}
+              className={`p-5 rounded-full border ${colors.border} ${colors.textPrimary} hover:border-emerald-500/40 transition-all`}
+              aria-label="WhatsApp"
+            >
+              <MessageCircle size={18} />
+            </motion.a>
+            <motion.a
+              href="tel:+919911471995"
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.95 }}
+              className={`p-5 rounded-full border ${colors.border} ${colors.textPrimary} hover:border-emerald-500/40 transition-all`}
+              aria-label="Phone"
+            >
+              <Phone size={18} />
+            </motion.a>
+          </div>
+        </motion.div>
+
+        <motion.div 
+          variants={itemVariants}
+          className="mt-20"
+        >
+           <a 
+            href="mailto:asifimam999@gmail.com"
+            className={`text-[9px] font-mono font-bold uppercase tracking-[0.3em] ${colors.textSecondary} hover:text-emerald-500 transition-colors inline-flex items-center gap-2`}
+           >
+             asifimam999@gmail.com <ArrowRight size={10} />
+           </a>
+        </motion.div>
       </motion.div>
-
-      {/* Heading with a slight scale-up */}
-      <motion.h2
-        variants={itemVariants}
-        className="text-5xl md:text-7xl font-black tracking-tighter mb-12 italic uppercase"
-      >
-        HAVE A BOTTLENECK? <br />
-        <motion.span
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className={theme.accent}
-        >
-          LET'S FIX IT.
-        </motion.span>
-      </motion.h2>
-
-      <motion.div
-        variants={itemVariants}
-        className="flex flex-wrap justify-center gap-6"
-      >
-        {/* Primary CTA with pulse effect */}
-        <motion.a
-          href="mailto:asifimam999@gmail.com"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className={`${theme.accentBg} text-white px-12 py-5 font-black rounded-full flex items-center gap-3 shadow-lg relative overflow-hidden group`}
-        >
-          <Mail className="w-5 h-5" /> HIRE ME
-        </motion.a>
-
-        {/* Secondary CTA: Call */}
-        <motion.a
-          href="tel:+919911471995"
-          whileHover={{
-            y: -5,
-            backgroundColor: isDark
-              ? "rgba(39, 39, 42, 1)"
-              : "rgba(244, 244, 245, 1)",
-          }}
-          whileTap={{ scale: 0.95 }}
-          className={`px-12 py-5 border-2 ${
-            isDark ? "border-zinc-800" : "border-zinc-200"
-          } font-black rounded-full flex items-center gap-3 transition-colors`}
-        >
-          <Phone className="w-5 h-5" /> CALL
-        </motion.a>
-
-        {/* Secondary CTA: WhatsApp */}
-        <motion.a
-          href="https://wa.me/919911471995"
-          whileHover={{
-            y: -5,
-            backgroundColor: isDark
-              ? "rgba(39, 39, 42, 1)"
-              : "rgba(244, 244, 245, 1)",
-          }}
-          whileTap={{ scale: 0.95 }}
-          className={`px-12 py-5 border-2 ${
-            isDark ? "border-zinc-800" : "border-zinc-200"
-          } font-black rounded-full flex items-center gap-3 transition-colors`}
-        >
-          <MessageCircle className="w-5 h-5" /> WHATSAPP
-        </motion.a>
-      </motion.div>
-    </motion.section>
+    </section>
   );
 }
+
