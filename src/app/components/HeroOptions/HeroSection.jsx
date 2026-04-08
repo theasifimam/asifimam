@@ -77,11 +77,10 @@ export default function HeroSection({ isDark = true }) {
       >
         {/* Subtle Label */}
         <motion.div variants={itemVariants} className="mb-6 flex items-center gap-3">
-          <div className="h-px w-6 bg-emerald-500/50" />
-          <span className={`text-[10px] md:text-xs font-mono font-bold tracking-[0.5em] uppercase ${colors.accent}`}>
+          <span className={`text-[10px] font-mono font-bold tracking-[0.5em] uppercase ${colors.accent}`}>
             {firstDescription}
           </span>
-          <div className="h-px w-6 bg-emerald-500/50" />
+          <div className="h-px w-8 bg-emerald-500/50" />
         </motion.div>
 
         {/* Hero Name / Title */}

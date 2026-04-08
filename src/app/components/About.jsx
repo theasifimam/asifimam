@@ -1,163 +1,105 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  Zap, 
-  History, 
-  GraduationCap, 
-  Heart,
-  ArrowUpRight 
-} from "lucide-react";
+import { Zap, History, GraduationCap, Heart, ArrowUpRight } from "lucide-react";
 
-/**
- * Refined About Section
- * Aligned with the minimalist and premium design language of the HeroSection.
- */
 export default function About({ isDark = true }) {
-  const colors = {
-    bg: isDark ? "bg-[#050505]" : "bg-white",
-    textPrimary: isDark ? "text-white" : "text-zinc-950",
-    textSecondary: isDark ? "text-zinc-500" : "text-zinc-500",
-    cardBg: isDark ? "bg-zinc-900/40" : "bg-zinc-50",
-    border: isDark ? "border-white/5" : "border-black/5",
-    accent: "text-emerald-500",
-  };
-
   const infoBlocks = [
     {
       title: "Philosophy",
-      icon: <Zap size={18} />,
+      icon: <Zap size={24} />,
       content: "Engineering digital systems where speed is the primary feature. Every line of code is audited for performance.",
+      cols: "md:col-span-2",
     },
     {
       title: "Architecture",
-      icon: <History size={18} />,
-      content: "Specializing in modular React architectures and scalable distributed Node.js backend systems.",
+      icon: <History size={24} />,
+      content: "Specializing in modular React architectures and scalable backend distributed services.",
+      cols: "md:col-span-1",
     },
     {
       title: "Education",
-      icon: <GraduationCap size={18} />,
-      content: "B.Tech in CS from GITAM. Focused on Computer Science fundamentals and user experience design.",
+      icon: <GraduationCap size={24} />,
+      content: "B.Tech in CS from GITAM. Focused on Computer Science fundamentals & UX.",
+      cols: "md:col-span-1",
     },
     {
       title: "Human Element",
-      icon: <Heart size={18} />,
-      content: "Boulderer, photographer, and modular synth enthusiast. Exploring the intersection of logic and creativity.",
+      icon: <Heart size={24} />,
+      content: "Boulderer and photographer. Exploring the intersection of logic and creativity.",
+      cols: "md:col-span-2",
     },
   ];
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
-    },
-  };
-
   return (
-    <section 
-      id="about" 
-      className={`relative py-32 overflow-hidden transition-colors duration-700 ${colors.bg}`}
-    >
+    <section id="about" className={`relative py-24 overflow-hidden transition-colors duration-700 ${isDark ? "bg-[#050505]" : "bg-white"}`}>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start"
-        >
-          {/* Left Side: Large Header & Intro */}
-          <div className="lg:col-span-12 mb-12">
-            <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
-              <span className={`text-[10px] font-mono font-bold tracking-[0.5em] uppercase ${colors.accent}`}>
-                Section_01
-              </span>
-              <div className="h-px w-8 bg-emerald-500/50" />
-            </motion.div>
-            
-            <motion.h2 
-              variants={itemVariants}
-              className={`text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] ${colors.textPrimary} mb-8`}
-            >
-              Building with <span className="italic text-emerald-500">Intention.</span> <br />
-              Thinking in <span className="opacity-40">Systems.</span>
-            </motion.h2>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[10px] md:text-xs font-mono text-emerald-400 font-bold uppercase tracking-widest">About</span>
           </div>
+          <h2 className={`text-4xl md:text-6xl font-black tracking-tight ${isDark ? "text-white" : "text-zinc-900"} mb-16`}>
+            Thinking in <span className="text-emerald-500">Systems.</span>
+          </h2>
+        </motion.div>
 
-          {/* Column 1: Image Frame */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Main Hero Card */}
           <motion.div 
-            variants={itemVariants}
-            className="lg:col-span-5"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className={`lg:col-span-4 rounded-[2rem] p-2 relative group overflow-hidden border ${isDark ? "bg-zinc-900/40 border-white/5" : "bg-white border-black/5 shadow-xl"}`}
           >
-            <div className="relative group">
-              <div className={`absolute -inset-4 border ${colors.border} rounded-[4rem] pointer-events-none group-hover:border-emerald-500/30 transition-colors duration-500`} />
-              <div className="relative aspect-[4/5] rounded-[3.5rem] overflow-hidden bg-zinc-900 shadow-2xl">
-                <img 
-                  src="/asifimam.jpg" 
-                  alt="Asif Imam" 
-                  className="w-full h-full object-cover grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-1000"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                
-                <div className="absolute bottom-8 left-8">
-                  <p className="text-white font-mono text-[10px] tracking-[0.2em] uppercase opacity-60 mb-1">Position</p>
-                  <p className="text-white font-bold text-lg">Software Engineer</p>
-                </div>
+            <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-opacity z-20">
+               <ArrowUpRight size={32} className="text-white" />
+            </div>
+            <div className="w-full h-full min-h-[400px] rounded-3xl overflow-hidden relative">
+              <img 
+                src="/asifimam.jpg" 
+                alt="Asif Imam" 
+                className="w-full h-full object-cover scale-100 group-hover:scale-105 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                 <p className="text-emerald-400 font-mono text-[10px] font-bold tracking-widest uppercase mb-1">Software Engineer</p>
+                 <p className="text-white font-bold text-xl leading-tight">Asif Imam</p>
               </div>
             </div>
           </motion.div>
 
-          {/* Column 2: Content Breakdown */}
-          <div className="lg:col-span-7 flex flex-col gap-12">
-            <motion.p 
-              variants={itemVariants}
-              className={`text-lg md:text-2xl font-medium leading-relaxed ${colors.textSecondary} max-w-2xl`}
-            >
-              I believe that software should be invisible yet powerful. My approach combines rigorous engineering principles with a deep appreciation for minimalist aesthetics—ensuring every project is as <span className={`${colors.textPrimary}`}>performant</span> as it is <span className={`${colors.textPrimary}`}>beautiful</span>.
-            </motion.p>
+          {/* Bento Grid */}
+          <div className="lg:col-span-8 flex flex-col gap-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+               <div className={`p-8 md:p-10 rounded-[2rem] w-full border ${isDark ? "bg-zinc-900/40 border-white/5" : "bg-white border-black/5 shadow-xl"}`}>
+                  <h3 className={`text-xl md:text-2xl font-medium leading-relaxed ${isDark ? "text-zinc-300" : "text-zinc-600"}`}>
+                    I believe that software should be invisible yet powerful. My approach combines rigorous engineering principles with a deep appreciation for minimalist aesthetics.
+                  </h3>
+               </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-grow">
               {infoBlocks.map((block, i) => (
                 <motion.div
                   key={i}
-                  variants={itemVariants}
-                  className={`p-8 rounded-[2.5rem] border ${colors.border} ${colors.cardBg} group hover:border-emerald-500/50 transition-all duration-500`}
+                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                  className={`relative p-8 rounded-[2rem] group overflow-hidden border ${isDark ? "bg-zinc-900/40 border-white/5" : "bg-white border-black/5 shadow-xl"} ${block.cols}`}
                 >
-                  <div className={`mb-6 p-3 rounded-2xl bg-emerald-500/10 w-fit ${colors.accent}`}>
+                  <div className="absolute -inset-px bg-gradient-to-b from-transparent to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className={`mb-6 p-4 rounded-2xl inline-flex ${isDark ? "bg-white/5 text-emerald-500" : "bg-black/5 text-emerald-600"} group-hover:scale-110 transition-transform duration-500`}>
                     {block.icon}
                   </div>
-                  <h4 className={`text-xl font-bold mb-3 ${colors.textPrimary} flex items-center gap-2`}>
+                  
+                  <h4 className={`text-xl font-bold mb-3 ${isDark ? "text-white" : "text-zinc-900"}`}>
                     {block.title}
-                    <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                   </h4>
-                  <p className={`text-sm leading-relaxed ${colors.textSecondary}`}>
+                  <p className={`text-sm leading-relaxed ${isDark ? "text-zinc-400" : "text-zinc-500"}`}>
                     {block.content}
                   </p>
                 </motion.div>
               ))}
             </div>
-
-            <motion.div variants={itemVariants}>
-               <a 
-                href="#projects" 
-                className={`inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em] ${colors.textPrimary} group`}
-               >
-                 View recent projects
-                 <span className={`w-8 h-px ${isDark ? 'bg-white/20' : 'bg-black/20'} group-hover:w-12 group-hover:bg-emerald-500 transition-all`} />
-               </a>
-            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
