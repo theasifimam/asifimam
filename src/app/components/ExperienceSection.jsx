@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Calendar, Briefcase, Award, CheckCircle2, ChevronDown } from "lucide-react";
+import { ChevronDown, CheckCircle2 } from "lucide-react";
 
 export default function Experience({ isDark }) {
   const [expandedIndex, setExpandedIndex] = useState(0);
@@ -37,13 +37,13 @@ export default function Experience({ isDark }) {
   ];
 
   return (
-    <section id="experience" className="py-28 px-6 max-w-4xl mx-auto">
+    <section id="experience" className="py-20 px-4 sm:px-6 max-w-4xl mx-auto">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="flex flex-col mb-16"
+        className="flex flex-col mb-12"
       >
         <div className="flex items-center gap-3 mb-6">
           <span className="text-[10px] font-mono font-black tracking-[0.5em] text-lime-accent uppercase">
@@ -51,17 +51,17 @@ export default function Experience({ isDark }) {
           </span>
           <div className="h-px w-8 bg-lime-accent/50" />
         </div>
-        <h2 className="text-4xl md:text-7xl font-sans font-black tracking-tight text-black dark:text-white uppercase">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl font-sans font-black tracking-tight text-black dark:text-white uppercase leading-tight text-left">
           Career <span className="text-lime-accent italic">Journey.</span>
         </h2>
       </motion.div>
 
-      {/* Chats List Timeline (Screenshot 1 active chats style) */}
-      <div className="rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-950 border border-black/5 dark:border-white/10 shadow-2xl p-4 md:p-6 space-y-3">
+      {/* Chats List Timeline */}
+      <div className="rounded-3xl md:rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-950 border border-black/5 dark:border-white/10 p-4 sm:p-6 space-y-3">
         
         {/* Chat List Header */}
-        <div className="px-4 py-2 border-b border-black/5 dark:border-white/10 mb-4 flex items-center justify-between">
-          <span className="text-[10px] font-mono font-black text-zinc-400 dark:text-zinc-500 tracking-[0.2em] uppercase">
+        <div className="px-2 py-2 border-b border-black/5 dark:border-white/10 mb-4 flex items-center justify-between">
+          <span className="text-[9px] sm:text-[10px] font-mono font-black text-zinc-400 dark:text-zinc-500 tracking-[0.2em] uppercase">
             RECENT_CONVERSATIONS
           </span>
           <span className="text-[9px] font-sans font-black bg-lime-accent text-black px-2 py-0.5 rounded-full uppercase tracking-wider">
@@ -74,53 +74,53 @@ export default function Experience({ isDark }) {
           return (
             <motion.div
               key={i}
-              className={`rounded-[2rem] border overflow-hidden transition-all duration-300 ${
+              className={`rounded-2xl md:rounded-[2rem] border overflow-hidden transition-all duration-300 ${
                 isExpanded
-                  ? "bg-zinc-100 dark:bg-zinc-900 border-black/10 dark:border-white/10 shadow-md"
+                  ? "bg-zinc-100 dark:bg-zinc-900 border-black/10 dark:border-white/10"
                   : "bg-white dark:bg-black/40 border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 cursor-pointer"
               }`}
               onClick={() => setExpandedIndex(isExpanded ? -1 : i)}
             >
               {/* Chat Item Row Header */}
-              <div className="p-5 flex items-center gap-4 select-none">
+              <div className="p-4 sm:p-5 flex items-center gap-3 sm:gap-4 select-none">
                 {/* Company Squircle Avatar */}
-                <div className={`w-14 h-14 rounded-[1.25rem] flex items-center justify-center font-sans font-black text-base shadow-sm shrink-0 transition-colors ${
+                <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-[1rem] sm:rounded-xl flex items-center justify-center font-sans font-black text-sm sm:text-base shrink-0 transition-colors ${
                   isExpanded ? "bg-lime-accent text-black" : "bg-zinc-200 dark:bg-zinc-900 text-black dark:text-zinc-300"
                 }`}>
                   {exp.companyInitials}
                 </div>
 
                 {/* Chat Middle Content */}
-                <div className="flex-grow min-w-0">
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <span className="font-sans font-black text-base md:text-lg text-black dark:text-white truncate">
+                <div className="flex-grow min-w-0 text-left">
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <span className="font-sans font-black text-sm sm:text-base md:text-lg text-black dark:text-white truncate">
                       {exp.company}
                     </span>
                     {exp.timeAgo === "active" && (
-                      <span className="w-2 h-2 rounded-full bg-lime-accent inline-block" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-lime-accent inline-block shrink-0" />
                     )}
                   </div>
-                  <p className="text-xs font-sans text-zinc-500 dark:text-zinc-400 font-bold truncate">
+                  <p className="text-[10px] sm:text-xs font-sans text-zinc-500 dark:text-zinc-400 font-bold truncate">
                     {exp.role}
                   </p>
                 </div>
 
-                {/* Chat Right Side (Time and Achievements Badge) */}
+                {/* Chat Right Side */}
                 <div className="flex flex-col items-end gap-1.5 shrink-0 text-right">
-                  <span className="text-[9px] font-mono text-zinc-400 dark:text-zinc-500 font-bold uppercase">
+                  <span className="text-[8px] sm:text-[9px] font-mono text-zinc-400 dark:text-zinc-500 font-bold uppercase">
                     {exp.period.split(" — ")[0]}
                   </span>
-                  <div className="flex items-center gap-2">
-                    {/* Achievement notification badge */}
-                    <div className="w-6 h-6 rounded-full bg-lime-accent text-black font-extrabold text-[10px] flex items-center justify-center shadow-sm" title={`${exp.achievements.length} achievements`}>
+                  <div className="flex items-center gap-1.5">
+                    {/* Achievement badge */}
+                    <div className="w-5 h-5 rounded-full bg-lime-accent text-black font-extrabold text-[9px] flex items-center justify-center" title={`${exp.achievements.length} achievements`}>
                       {exp.achievements.length}
                     </div>
-                    <ChevronDown size={14} className={`text-zinc-400 transition-transform duration-300 ${isExpanded ? "rotate-180 text-lime-accent" : ""}`} />
+                    <ChevronDown size={12} className={`text-zinc-400 transition-transform duration-300 ${isExpanded ? "rotate-180 text-lime-accent" : ""}`} />
                   </div>
                 </div>
               </div>
 
-              {/* Expandable Chat Details (Framer Motion Drawer) */}
+              {/* Expandable Chat Details */}
               <AnimatePresence initial={false}>
                 {isExpanded && (
                   <motion.div
@@ -129,26 +129,26 @@ export default function Experience({ isDark }) {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <div className="px-5 pb-6 pt-2 border-t border-black/5 dark:border-white/5 space-y-5 bg-zinc-50/50 dark:bg-black/20 text-left">
+                    <div className="px-4 pb-5 pt-1 sm:px-5 sm:pb-6 sm:pt-2 border-t border-black/5 dark:border-white/5 space-y-4 bg-zinc-50/50 dark:bg-black/20 text-left">
                       {/* Job Description */}
                       <div>
-                        <span className="text-[9px] font-mono font-black text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mb-1">
+                        <span className="text-[8px] font-mono font-black text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mb-1">
                           Role Overview
                         </span>
-                        <p className="text-sm font-sans leading-relaxed text-zinc-700 dark:text-zinc-300">
+                        <p className="text-xs sm:text-sm font-sans leading-relaxed text-zinc-700 dark:text-zinc-300">
                           {exp.description}
                         </p>
                       </div>
 
                       {/* Achievements list */}
                       <div>
-                        <span className="text-[9px] font-mono font-black text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mb-3">
+                        <span className="text-[8px] font-mono font-black text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mb-2">
                           Key Deliverables
                         </span>
-                        <div className="space-y-2.5">
+                        <div className="space-y-2">
                           {exp.achievements.map((ach, idx) => (
-                            <div key={idx} className="flex items-start gap-2.5">
-                              <CheckCircle2 size={15} className="text-lime-accent mt-0.5 shrink-0" />
+                            <div key={idx} className="flex items-start gap-2">
+                              <CheckCircle2 size={13} className="text-lime-accent mt-0.5 shrink-0" />
                               <span className="text-xs font-sans font-medium text-zinc-800 dark:text-zinc-300">
                                 {ach}
                               </span>
@@ -159,14 +159,14 @@ export default function Experience({ isDark }) {
 
                       {/* Tech Stack Pills */}
                       <div>
-                        <span className="text-[9px] font-mono font-black text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mb-2.5">
+                        <span className="text-[8px] font-mono font-black text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mb-2">
                           Tech Stack
                         </span>
                         <div className="flex flex-wrap gap-1.5">
                           {exp.techStack.map((tech, idx) => (
                             <span
                               key={idx}
-                              className="px-3 py-1 rounded-lg text-[9px] font-sans font-black uppercase tracking-wider bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-black/5 dark:border-white/5"
+                              className="px-2.5 py-1 rounded-lg text-[8px] sm:text-[9px] font-sans font-black uppercase tracking-wider bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-black/5 dark:border-white/5"
                             >
                               {tech}
                             </span>

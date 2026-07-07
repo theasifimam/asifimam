@@ -70,53 +70,53 @@ export default function Header({ isDark, setIsDark }) {
   return (
     <>
       {/* Top Header Bar */}
-      <nav className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex items-center justify-between pointer-events-none">
-        {/* Logo container with background for readability */}
+      <nav className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 flex items-center justify-between pointer-events-none">
+        {/* Logo container */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="pointer-events-auto flex items-center gap-2 bg-white/80 dark:bg-black/80 backdrop-blur-md px-5 py-2.5 rounded-[1.5rem] border border-black/5 dark:border-white/5 shadow-sm cursor-pointer"
+          className="pointer-events-auto flex items-center gap-1.5 bg-white/85 dark:bg-black/85 backdrop-blur-md px-4 py-2.5 rounded-xl border border-black/5 dark:border-white/5 cursor-pointer"
           onClick={(e) => handleScrollTo(e, "home")}
         >
-          <span className="font-sans font-black tracking-tight text-2xl text-black dark:text-white uppercase">
+          <span className="font-sans font-black tracking-tight text-xl text-black dark:text-white uppercase">
             ASIF
           </span>
-          <div className="relative flex h-3 w-3 ml-0.5">
+          <div className="relative flex h-2.5 w-2.5 ml-0.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-accent opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-lime-accent"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-lime-accent"></span>
           </div>
         </motion.div>
 
-        {/* Action Buttons (Right side) */}
+        {/* Action Buttons */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="pointer-events-auto flex items-center gap-3 bg-white/80 dark:bg-black/80 backdrop-blur-md px-4 py-2 rounded-[1.5rem] border border-black/5 dark:border-white/5 shadow-sm"
+          className="pointer-events-auto flex items-center gap-2.5 bg-white/85 dark:bg-black/85 backdrop-blur-md px-3 py-2 rounded-xl border border-black/5 dark:border-white/5"
         >
           {/* Search Button */}
           <button
             onClick={() => setIsSearchOpen(!isSearchOpen)}
-            className="w-10 h-10 rounded-full border border-black/5 dark:border-white/5 bg-zinc-100/50 dark:bg-zinc-900/50 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-full border border-black/5 dark:border-white/5 bg-zinc-100/50 dark:bg-zinc-900/50 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
           >
-            <Search size={16} />
+            <Search size={14} />
           </button>
 
           {/* CV Resume Link */}
           <a
             href={CV_URL}
             download
-            className="hidden sm:flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-400 hover:text-lime-accent transition-colors px-3"
+            className="hidden sm:flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-400 hover:text-lime-accent transition-colors px-2"
           >
-            Resume <FileDown size={14} />
+            Resume <FileDown size={12} />
           </a>
 
           {/* Theme Toggler */}
           <button
             onClick={() => setIsDark(!isDark)}
-            className="w-10 h-10 rounded-full border border-black/5 dark:border-white/5 bg-zinc-100/50 dark:bg-zinc-900/50 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-full border border-black/5 dark:border-white/5 bg-zinc-100/50 dark:bg-zinc-900/50 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
           >
             <Zap
-              size={16}
+              size={14}
               className={isDark ? "fill-lime-accent text-lime-accent" : ""}
             />
           </button>
@@ -130,20 +130,20 @@ export default function Header({ isDark, setIsDark }) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-24 right-6 z-50 w-80 bg-white dark:bg-black border border-black/10 dark:border-white/10 rounded-3xl p-4 shadow-2xl backdrop-blur-xl animate-none"
+            className="fixed top-20 right-4 sm:right-6 z-50 w-72 sm:w-80 bg-white dark:bg-black border border-black/10 dark:border-white/10 rounded-2xl p-4 backdrop-blur-xl"
           >
-            <div className="flex items-center gap-2 bg-zinc-100 dark:bg-zinc-900 rounded-2xl px-3 py-2">
-              <Search size={16} className="text-zinc-400" />
+            <div className="flex items-center gap-2 bg-zinc-100 dark:bg-zinc-900 rounded-xl px-3 py-2">
+              <Search size={14} className="text-zinc-400" />
               <input
                 type="text"
                 placeholder="Search portfolio..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-transparent border-none outline-none w-full text-sm text-black dark:text-white"
+                className="bg-transparent border-none outline-none w-full text-xs sm:text-sm text-black dark:text-white"
               />
             </div>
             {searchQuery && (
-              <div className="mt-4 max-h-48 overflow-y-auto space-y-2">
+              <div className="mt-4 max-h-40 overflow-y-auto space-y-2 text-left">
                 {navLinks
                   .filter((link) =>
                     link.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -157,7 +157,7 @@ export default function Header({ isDark, setIsDark }) {
                         setIsSearchOpen(false);
                         setSearchQuery("");
                       }}
-                      className="block p-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-900 text-xs font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400"
+                      className="block p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-900 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400"
                     >
                       Go to {link.name}
                     </a>
@@ -168,13 +168,13 @@ export default function Header({ isDark, setIsDark }) {
         )}
       </AnimatePresence>
 
-      {/* Floating Bottom Dock Navigation (Screenshot 1 tab bar style) */}
-      <div className="fixed bottom-6 left-0 w-full z-50 flex justify-center pointer-events-none">
+      {/* Floating Bottom Dock Navigation */}
+      <div className="fixed bottom-5 left-0 w-full z-50 flex justify-center pointer-events-none">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
-          className="pointer-events-auto flex items-center gap-1.5 p-2 rounded-full bg-black border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-md"
+          className="pointer-events-auto flex items-center gap-1.5 p-1.5 rounded-full bg-black border border-white/10 backdrop-blur-md"
         >
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
@@ -188,18 +188,18 @@ export default function Header({ isDark, setIsDark }) {
                 {isActive ? (
                   <motion.div
                     layoutId="dock-active-pill"
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-lime-accent text-black font-extrabold text-[11px] tracking-wider uppercase shadow-[0_5px_15px_rgba(210,255,58,0.3)]"
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-lime-accent text-black font-extrabold text-[10px] tracking-wider uppercase"
                     transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                   >
-                    <link.icon size={14} className="stroke-[2.5]" />
+                    <link.icon size={12} className="stroke-[2.5]" />
                     <span>{link.name}</span>
                   </motion.div>
                 ) : (
                   <motion.div
-                    whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.08)" }}
-                    className="p-3.5 rounded-full text-zinc-400 hover:text-white transition-colors"
+                    whileHover={{ scale: 1.08, backgroundColor: "rgba(255,255,255,0.06)" }}
+                    className="p-3 rounded-full text-zinc-400 hover:text-white transition-colors"
                   >
-                    <link.icon size={16} />
+                    <link.icon size={14} />
                   </motion.div>
                 )}
               </a>

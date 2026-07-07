@@ -16,7 +16,7 @@ export default function Projects({ isDark }) {
       tech: ["Next.js", "Node.js", "Express", "MongoDB", "Socket.io"],
       link: "https://ai.mazlis.com",
       github: "https://github.com/theasifimam",
-      images: ["/asifimam.jpg"], // Replaced with existing assets for local preview fallback
+      images: ["/asifimam.jpg"],
       metrics: ["Sub-50ms message latency", "End-to-end WebSocket security", "Dynamic status badge syncing"]
     },
     {
@@ -61,37 +61,37 @@ export default function Projects({ isDark }) {
     : projects.filter(p => p.category === activeFilter);
 
   return (
-    <section id="projects" className="py-28 px-6 max-w-7xl mx-auto">
+    <section id="projects" className="py-20 px-4 sm:px-6 max-w-7xl mx-auto">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6"
+        className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
       >
-        <div>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-lime-accent/10 border border-lime-accent/20 mb-6">
+        <div className="text-left">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-lime-accent/10 border border-lime-accent/20 mb-6">
             <span className="w-2 h-2 rounded-full bg-lime-accent animate-pulse" />
             <span className="text-[10px] font-mono text-lime-accent font-black uppercase tracking-widest">
               Section_04 // Portfolios
             </span>
           </div>
-          <h2 className="text-4xl md:text-7xl font-sans font-black tracking-tight text-black dark:text-white uppercase">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-sans font-black tracking-tight text-black dark:text-white uppercase leading-tight">
             Selected <span className="text-lime-accent">Work.</span>
           </h2>
         </div>
 
-        {/* Filter Tabs (Bottom nav tab style) */}
-        <div className="flex p-1.5 rounded-full bg-black border border-white/10 shrink-0 self-start md:self-auto">
+        {/* Filter Tabs */}
+        <div className="flex p-1 rounded-full bg-black border border-white/10 shrink-0 self-start md:self-auto">
           {filters.map((filter) => {
             const isActive = activeFilter === filter;
             return (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`relative px-5 py-2 rounded-full font-sans font-black text-[10px] uppercase tracking-wider transition-all cursor-pointer ${
+                className={`relative px-4 py-1.5 rounded-full font-sans font-black text-[9px] sm:text-[10px] uppercase tracking-wider transition-all cursor-pointer ${
                   isActive
-                    ? "bg-lime-accent text-black shadow-md shadow-lime-accent/20"
+                    ? "bg-lime-accent text-black"
                     : "text-zinc-400 hover:text-white"
                 }`}
               >
@@ -102,23 +102,23 @@ export default function Projects({ isDark }) {
         </div>
       </motion.div>
 
-      {/* Projects Bento Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, i) => (
+          {filteredProjects.map((project) => (
             <motion.div
               layout
               key={project.title}
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               onClick={() => setSelectedProject(project)}
-              className="group rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-950 border border-black/5 dark:border-white/10 overflow-hidden cursor-pointer shadow-lg hover:border-lime-accent/30 hover:shadow-lime-accent/5 dark:hover:shadow-[0_15px_40px_rgba(210,255,58,0.03)] transition-all duration-500"
+              className="group rounded-3xl md:rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-950 border border-black/5 dark:border-white/10 overflow-hidden cursor-pointer transition-all duration-500"
             >
               {/* Photo Area */}
               <div className="p-3">
-                <div className="w-full h-56 sm:h-72 rounded-[2rem] overflow-hidden relative bg-zinc-200 dark:bg-zinc-900">
+                <div className="w-full h-48 sm:h-64 lg:h-72 rounded-2xl md:rounded-[2rem] overflow-hidden relative bg-zinc-200 dark:bg-zinc-900">
                   <img
                     src={project.images[0]}
                     alt={project.title}
@@ -127,35 +127,35 @@ export default function Projects({ isDark }) {
                   <div className="absolute inset-0 bg-black/30 dark:bg-black/40 group-hover:bg-black/10 transition-colors duration-500" />
                   
                   {/* Category Badge */}
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-white text-[9px] font-mono font-black uppercase tracking-wider">
-                    <FolderGit2 size={10} className="text-lime-accent" />
+                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-white text-[8px] sm:text-[9px] font-mono font-black uppercase tracking-wider">
+                    <FolderGit2 size={9} className="text-lime-accent" />
                     {project.subCategory}
                   </div>
 
                   {/* Icon link bubble reveal */}
-                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-lime-accent text-black flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 shadow-md">
-                    <ArrowUpRight size={18} className="stroke-[2.5]" />
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 rounded-full bg-lime-accent text-black flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                    <ArrowUpRight size={16} className="stroke-[2.5]" />
                   </div>
                 </div>
               </div>
 
               {/* Text Info */}
-              <div className="p-8 flex flex-col justify-between">
+              <div className="p-6 md:p-8 flex flex-col justify-between text-left">
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-sans font-black tracking-tight text-black dark:text-white uppercase mb-2 group-hover:text-lime-accent transition-colors">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-sans font-black tracking-tight text-black dark:text-white uppercase mb-2 group-hover:text-lime-accent transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-sm font-sans leading-relaxed text-zinc-500 dark:text-zinc-400 line-clamp-3 mb-6">
+                  <p className="text-xs sm:text-sm font-sans leading-relaxed text-zinc-500 dark:text-zinc-400 line-clamp-3 mb-5">
                     {project.description}
                   </p>
                 </div>
 
                 {/* Tech Pills */}
-                <div className="flex flex-wrap gap-2 pt-2">
+                <div className="flex flex-wrap gap-1.5 pt-1">
                   {project.tech.map((t, idx) => (
                     <span
                       key={idx}
-                      className="px-3.5 py-1.5 rounded-xl text-[9px] font-sans font-black uppercase tracking-wider bg-zinc-200 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 border border-black/5 dark:border-white/5"
+                      className="px-2.5 py-1 rounded-lg text-[8px] sm:text-[9px] font-sans font-black uppercase tracking-wider bg-zinc-200 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 border border-black/5 dark:border-white/5"
                     >
                       {t}
                     </span>

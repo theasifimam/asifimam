@@ -48,7 +48,7 @@ const ProjectModalComponent = ({ project, isOpen, onClose, isDark }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className={`relative w-full max-w-7xl h-full max-h-[90vh] flex flex-col lg:flex-row rounded-[2.5rem] ${colors.bg} ${colors.border} border shadow-2xl overflow-hidden`}
+            className={`relative w-full max-w-7xl h-full max-h-[90vh] flex flex-col lg:flex-row rounded-3xl md:rounded-[2.5rem] ${colors.bg} ${colors.border} border overflow-hidden`}
           >
             {/* Close Button */}
             <motion.button
@@ -68,7 +68,7 @@ const ProjectModalComponent = ({ project, isOpen, onClose, isDark }) => {
                     <img
                       src={image}
                       alt="Project preview"
-                      className="w-full h-full object-contain rounded-2xl shadow-2xl"
+                      className="w-full h-full object-contain rounded-2xl md:rounded-2xl"
                     />
                   </div>
                 ))}
@@ -81,15 +81,15 @@ const ProjectModalComponent = ({ project, isOpen, onClose, isDark }) => {
             </div>
 
             {/* Content Section */}
-            <div className="w-full lg:w-[40%] h-[60%] lg:h-full flex flex-col overflow-y-auto no-scrollbar p-10 md:p-16">
+            <div className="w-full lg:w-[40%] h-[60%] lg:h-full flex flex-col overflow-y-auto no-scrollbar p-6 sm:p-10 md:p-12 text-left">
               <div className="mb-12">
                 <span className={`text-[10px] font-mono font-bold uppercase tracking-[0.3em] ${colors.accent} mb-6 block`}>
                   {project.category}
                 </span>
-                <h2 className={`text-4xl md:text-6xl font-sans font-black tracking-tight uppercase mb-8 ${colors.textPrimary}`}>
+                <h2 className={`text-3xl md:text-5xl font-sans font-black tracking-tight uppercase mb-8 ${colors.textPrimary}`}>
                   {project.title}
                 </h2>
-                <p className={`text-base leading-relaxed ${colors.textSecondary} mb-12`}>
+                <p className={`text-sm sm:text-base leading-relaxed ${colors.textSecondary} mb-12`}>
                   {project.longDescription || project.description}
                 </p>
 
@@ -120,7 +120,7 @@ const ProjectModalComponent = ({ project, isOpen, onClose, isDark }) => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-3 bg-lime-accent hover:bg-lime-accent-hover text-black font-sans font-black py-5 rounded-full transition-all shadow-lg shadow-lime-accent/20 cursor-pointer"
+                    className="flex-1 flex items-center justify-center gap-3 bg-lime-accent hover:bg-lime-accent-hover text-black font-sans font-black py-5 rounded-full transition-all cursor-pointer"
                   >
                     VISIT PROJECT <ExternalLink size={16} />
                   </a>
