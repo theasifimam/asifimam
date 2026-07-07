@@ -10,11 +10,11 @@ export default function Footer({ isDark = true }) {
   const currentYear = new Date().getFullYear();
 
   const colors = {
-    bg: isDark ? "bg-[#050505]" : "bg-white",
-    border: isDark ? "border-white/5" : "border-black/5",
+    bg: isDark ? "bg-[#000000]" : "bg-white",
+    border: isDark ? "border-white/10" : "border-black/10",
     textPrimary: isDark ? "text-white" : "text-black",
     textSecondary: isDark ? "text-zinc-500" : "text-zinc-400",
-    accent: "text-emerald-500",
+    accent: "text-lime-accent",
   };
 
   const socials = [
@@ -55,11 +55,12 @@ export default function Footer({ isDark = true }) {
         {/* Main Footer Content */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-16 mb-24">
           <motion.div variants={itemVariants} className="max-w-sm">
-            <div className={`font-black tracking-tighter text-3xl ${colors.textPrimary} mb-6`}>
-              A<span className="text-emerald-500">.</span>
+            <div className={`font-black tracking-tighter text-3xl ${colors.textPrimary} mb-6 flex items-center gap-1`}>
+              <span>ASIF</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-lime-accent inline-block" />
             </div>
             <p className={`text-base leading-relaxed ${colors.textSecondary}`}>
-              Building high-performance digital systems with minimalist aesthetics and engineering precision.
+              Building high-performance MERN digital systems with modern aesthetics and engineering precision.
             </p>
           </motion.div>
 
@@ -72,7 +73,7 @@ export default function Footer({ isDark = true }) {
                    href={social.href}
                    target="_blank"
                    rel="noopener noreferrer"
-                   className={`text-xs font-bold uppercase tracking-widest ${colors.textSecondary} hover:text-emerald-500 transition-colors`}
+                   className={`text-xs font-bold uppercase tracking-widest ${colors.textSecondary} hover:text-lime-accent transition-colors`}
                  >
                    {social.name}
                  </a>
@@ -82,7 +83,7 @@ export default function Footer({ isDark = true }) {
             <motion.div variants={itemVariants} className="flex flex-col gap-4">
                <span className={`text-[10px] font-mono font-bold uppercase tracking-[0.2em] ${colors.textSecondary} opacity-60`}>Status</span>
                <div className="flex items-center gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                 <div className="w-1.5 h-1.5 rounded-full bg-lime-accent animate-pulse" />
                  <span className={`text-xs font-bold uppercase tracking-widest ${colors.textPrimary}`}>Available</span>
                </div>
             </motion.div>
@@ -100,7 +101,7 @@ export default function Footer({ isDark = true }) {
 
           <button 
             onClick={scrollToTop}
-            className={`group text-[9px] font-mono font-bold uppercase tracking-[0.3em] ${colors.textSecondary} hover:text-emerald-500 transition-colors flex items-center gap-2`}
+            className={`group text-[9px] font-mono font-bold uppercase tracking-[0.3em] ${colors.textSecondary} hover:text-lime-accent transition-colors flex items-center gap-2 cursor-pointer`}
           >
              Back to top <ArrowUp size={12} className="group-hover:-translate-y-1 transition-transform" />
           </button>

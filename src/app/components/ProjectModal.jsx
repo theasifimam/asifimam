@@ -21,12 +21,12 @@ const ProjectModalComponent = ({ project, isOpen, onClose, isDark }) => {
   if (!project) return null;
 
   const colors = {
-    bg: isDark ? "bg-[#050505]" : "bg-white",
+    bg: isDark ? "bg-[#000000]" : "bg-white",
     textPrimary: isDark ? "text-white" : "text-black",
     textSecondary: isDark ? "text-zinc-500" : "text-zinc-400",
-    border: isDark ? "border-white/5" : "border-black/5",
-    accent: "text-emerald-500",
-    accentBg: "bg-emerald-500",
+    border: isDark ? "border-white/10" : "border-black/10",
+    accent: "text-lime-accent",
+    accentBg: "bg-lime-accent",
   };
 
   return (
@@ -39,7 +39,7 @@ const ProjectModalComponent = ({ project, isOpen, onClose, isDark }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/60 backdrop-blur-md"
+            className="absolute inset-0 bg-black/75 backdrop-blur-md"
           />
 
           {/* Modal Card */}
@@ -48,14 +48,14 @@ const ProjectModalComponent = ({ project, isOpen, onClose, isDark }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className={`relative w-full max-w-7xl h-full max-h-[90vh] flex flex-col lg:flex-row rounded-[3rem] ${colors.bg} ${colors.border} border shadow-2xl overflow-hidden`}
+            className={`relative w-full max-w-7xl h-full max-h-[90vh] flex flex-col lg:flex-row rounded-[2.5rem] ${colors.bg} ${colors.border} border shadow-2xl overflow-hidden`}
           >
             {/* Close Button */}
             <motion.button
               whileHover={{ rotate: 90, scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={onClose}
-              className={`absolute top-8 right-8 z-[110] p-4 rounded-full ${isDark ? "bg-white/5" : "bg-black/5"} ${colors.textPrimary} backdrop-blur-xl border ${colors.border} transition-colors`}
+              className={`absolute top-8 right-8 z-[110] p-4 rounded-full ${isDark ? "bg-zinc-900 border-zinc-800" : "bg-black/5"} ${colors.textPrimary} backdrop-blur-xl border ${colors.border} transition-colors cursor-pointer`}
             >
               <X size={20} />
             </motion.button>
@@ -75,7 +75,7 @@ const ProjectModalComponent = ({ project, isOpen, onClose, isDark }) => {
               </div>
               <div className="p-8 flex justify-center gap-2">
                  {project.images?.map((_, i) => (
-                   <div key={i} className="w-1.5 h-1.5 rounded-full bg-emerald-500/20" />
+                   <div key={i} className="w-1.5 h-1.5 rounded-full bg-lime-accent/40" />
                  ))}
               </div>
             </div>
@@ -86,16 +86,16 @@ const ProjectModalComponent = ({ project, isOpen, onClose, isDark }) => {
                 <span className={`text-[10px] font-mono font-bold uppercase tracking-[0.3em] ${colors.accent} mb-6 block`}>
                   {project.category}
                 </span>
-                <h2 className={`text-4xl md:text-6xl font-black tracking-tighter mb-8 ${colors.textPrimary}`}>
+                <h2 className={`text-4xl md:text-6xl font-sans font-black tracking-tight uppercase mb-8 ${colors.textPrimary}`}>
                   {project.title}
                 </h2>
-                <p className={`text-lg leading-relaxed ${colors.textSecondary} mb-12`}>
+                <p className={`text-base leading-relaxed ${colors.textSecondary} mb-12`}>
                   {project.longDescription || project.description}
                 </p>
 
                 {/* Features List */}
                 <div className="space-y-6 mb-16">
-                   <h4 className={`text-[10px] font-mono font-bold uppercase tracking-[0.2em] ${colors.textSecondary} opacity-60 mb-4`}>Highlights</h4>
+                   <h4 className={`text-[10px] font-mono font-black uppercase tracking-[0.2em] ${colors.textSecondary} opacity-60 mb-4`}>Highlights</h4>
                    {project.metrics?.map((f, i) => (
                      <div key={i} className="flex items-start gap-4">
                         <CheckCircle2 size={18} className={colors.accent} />
@@ -120,7 +120,7 @@ const ProjectModalComponent = ({ project, isOpen, onClose, isDark }) => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-black font-black py-5 rounded-full transition-all shadow-lg shadow-emerald-500/20"
+                    className="flex-1 flex items-center justify-center gap-3 bg-lime-accent hover:bg-lime-accent-hover text-black font-sans font-black py-5 rounded-full transition-all shadow-lg shadow-lime-accent/20 cursor-pointer"
                   >
                     VISIT PROJECT <ExternalLink size={16} />
                   </a>
@@ -128,7 +128,7 @@ const ProjectModalComponent = ({ project, isOpen, onClose, isDark }) => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-5 rounded-full border ${colors.border} ${colors.textPrimary} hover:border-emerald-500/40 transition-all`}
+                    className={`p-5 rounded-full border ${colors.border} ${colors.textPrimary} hover:border-lime-accent/40 transition-all cursor-pointer`}
                   >
                     <Github size={20} />
                   </a>
