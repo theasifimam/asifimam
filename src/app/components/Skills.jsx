@@ -60,8 +60,8 @@ export default function Skills({ isDark }) {
           </h2>
         </motion.div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Minimal Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
           {categories.map((cat, i) => (
             <motion.div
               key={cat.title}
@@ -69,46 +69,45 @@ export default function Skills({ isDark }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className={`p-6 md:p-8 bg-zinc-50 dark:bg-zinc-900 border border-black/5 dark:border-white/5 hover:border-lime-accent/20 hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between min-h-[280px] ${cat.cornerStyle} rounded-3xl md:rounded-[2.5rem]`}
+              className="flex flex-col justify-between text-left border-t border-zinc-200 dark:border-zinc-800/80 pt-8 transition-[border-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-lime-accent group/skill"
             >
               <div>
                 {/* Header Row */}
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-11 h-11 rounded-xl bg-zinc-200 dark:bg-zinc-800 text-black dark:text-lime-accent flex items-center justify-center border border-black/5 dark:border-white/5">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-black dark:text-lime-accent transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/skill:-translate-y-1">
                     {cat.icon}
                   </div>
-                  <span className="text-[9px] font-mono text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-wider">
-                    MODULE_{i + 1}
+                  <span className="text-[10px] font-mono text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-widest">
+                    Module // 0{i + 1}
                   </span>
                 </div>
 
                 {/* Title and Desc */}
-                <h3 className="text-xl sm:text-2xl font-sans font-black text-black dark:text-white uppercase tracking-tight mb-2 text-left">
+                <h3 className="text-lg sm:text-xl font-sans font-black text-black dark:text-white uppercase tracking-tight mb-2 transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/skill:text-lime-accent">
                   {cat.title}
                 </h3>
-                <p className="text-xs sm:text-sm font-sans font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5 text-left">
+                <p className="text-xs sm:text-sm font-sans text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">
                   {cat.desc}
                 </p>
               </div>
 
               {/* Skills Tags Area & Core Metric */}
               <div>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-5">
+                <div className="flex flex-wrap gap-1.5 mb-6">
                   {cat.skills.map((skill, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1.5 rounded-lg text-[9px] sm:text-[10px] font-sans font-black uppercase tracking-wider bg-white dark:bg-zinc-950 text-zinc-700 dark:text-zinc-300 border border-black/5 dark:border-white/10 flex items-center gap-1 hover:border-lime-accent/30 hover:text-lime-accent dark:hover:text-lime-accent transition-all"
+                      className="px-2 py-0.5 rounded-md text-[8px] sm:text-[9px] font-mono font-bold uppercase bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border border-zinc-200/60 dark:border-zinc-800/60 hover:border-lime-accent/50 hover:bg-lime-accent/5 hover:text-lime-accent transition-[color,background-color,border-color] duration-300 cursor-default"
                     >
-                      <CheckCircle2 size={9} className="text-lime-accent" />
                       {skill}
                     </span>
                   ))}
                 </div>
 
                 {/* Focus Line */}
-                <div className="border-t border-black/5 dark:border-white/5 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-left">
-                  <span className="text-[9px] font-mono text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-widest">
-                    Performance Target
+                <div className="border-t border-zinc-100 dark:border-zinc-900/65 pt-4 flex items-center justify-between">
+                  <span className="text-[9px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">
+                    Target
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-sans font-bold text-black dark:text-white flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-lime-accent shrink-0" />

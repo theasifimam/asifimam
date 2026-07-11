@@ -75,7 +75,7 @@ export default function Header({ isDark, setIsDark }) {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="pointer-events-auto flex items-center gap-1.5 bg-white/85 dark:bg-black/85 backdrop-blur-md px-4 py-2.5 rounded-xl border border-black/5 dark:border-white/5 cursor-pointer"
+          className="pointer-events-auto flex items-center gap-1.5 bg-white/85 dark:bg-black/85 backdrop-blur-md px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 cursor-pointer"
           onClick={(e) => handleScrollTo(e, "home")}
         >
           <span className="font-sans font-black tracking-tight text-xl text-black dark:text-white uppercase">
@@ -91,12 +91,12 @@ export default function Header({ isDark, setIsDark }) {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="pointer-events-auto flex items-center gap-2.5 bg-white/85 dark:bg-black/85 backdrop-blur-md px-3 py-2 rounded-xl border border-black/5 dark:border-white/5"
+          className="pointer-events-auto flex items-center gap-2.5 bg-white/85 dark:bg-black/85 backdrop-blur-md px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800"
         >
           {/* Search Button */}
           <button
             onClick={() => setIsSearchOpen(!isSearchOpen)}
-            className="w-9 h-9 rounded-full border border-black/5 dark:border-white/5 bg-zinc-100/50 dark:bg-zinc-900/50 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-100/50 dark:bg-zinc-900/50 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
           >
             <Search size={14} />
           </button>
@@ -113,7 +113,7 @@ export default function Header({ isDark, setIsDark }) {
           {/* Theme Toggler */}
           <button
             onClick={() => setIsDark(!isDark)}
-            className="w-9 h-9 rounded-full border border-black/5 dark:border-white/5 bg-zinc-100/50 dark:bg-zinc-900/50 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-100/50 dark:bg-zinc-900/50 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
           >
             <Zap
               size={14}
@@ -130,9 +130,9 @@ export default function Header({ isDark, setIsDark }) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-20 right-4 sm:right-6 z-50 w-72 sm:w-80 bg-white dark:bg-black border border-black/10 dark:border-white/10 rounded-2xl p-4 backdrop-blur-xl"
+            className="fixed top-20 right-4 sm:right-6 z-50 w-72 sm:w-80 bg-white dark:bg-black border border-zinc-200 dark:border-zinc-800 rounded-2xl p-4 backdrop-blur-xl"
           >
-            <div className="flex items-center gap-2 bg-zinc-100 dark:bg-zinc-900 rounded-xl px-3 py-2">
+            <div className="flex items-center gap-2 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2">
               <Search size={14} className="text-zinc-400" />
               <input
                 type="text"

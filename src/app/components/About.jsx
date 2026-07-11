@@ -81,7 +81,7 @@ export default function About({ isDark }) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-4 rounded-3xl md:rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-900 border border-black/5 dark:border-white/5 p-3 flex flex-col group overflow-hidden relative"
+            className="lg:col-span-4 rounded-3xl md:rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 p-3 flex flex-col group overflow-hidden relative"
           >
             <div className="w-full h-[300px] sm:h-[380px] rounded-2xl md:rounded-[2rem] overflow-hidden relative bg-zinc-100 dark:bg-zinc-950">
               <img
@@ -122,42 +122,25 @@ export default function About({ isDark }) {
               </div>
             </motion.div>
 
-            {/* Sub Info Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-grow">
+            {/* Sub Info Blocks (Decluttered & Minimal Grid) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mt-4">
               {infoBlocks.map((block, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className={`p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] flex flex-col justify-between min-h-[200px] transition-all relative overflow-hidden border ${
-                    block.highlight
-                      ? "bg-lime-accent text-black border-lime-accent/20"
-                      : "bg-zinc-50 dark:bg-zinc-900 text-black dark:text-white border-black/5 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-800"
-                  } ${block.cols}`}
+                  className="text-left flex gap-4 items-start"
                 >
-                  <div className="flex justify-between items-start mb-4">
-                    <div
-                      className={`p-2.5 rounded-xl ${
-                        block.highlight
-                          ? "bg-black text-lime-accent"
-                          : "bg-zinc-200 dark:bg-zinc-800 text-black dark:text-lime-accent"
-                      }`}
-                    >
-                      {block.icon}
-                    </div>
+                  <div className="p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-black dark:text-lime-accent shrink-0 h-10 w-10 flex items-center justify-center border border-zinc-200 dark:border-zinc-800">
+                    {block.icon}
                   </div>
-
-                  <div className="text-left">
-                    <h4 className="text-base sm:text-lg font-sans font-black uppercase tracking-tight mb-2">
+                  <div>
+                    <h4 className="text-sm font-sans font-black uppercase tracking-wider text-black dark:text-white mb-1">
                       {block.title}
                     </h4>
-                    <p
-                      className={`text-xs sm:text-sm leading-relaxed ${
-                        block.highlight ? "text-zinc-800 font-medium" : "text-zinc-500 dark:text-zinc-400"
-                      }`}
-                    >
+                    <p className="text-xs sm:text-sm font-sans font-medium leading-relaxed text-zinc-500 dark:text-zinc-400">
                       {block.content}
                     </p>
                   </div>

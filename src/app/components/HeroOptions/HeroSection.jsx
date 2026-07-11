@@ -109,7 +109,7 @@ export default function HeroSection({ isDark }) {
               <a
                 href="#contact"
                 onClick={(e) => handleContactClick(e, "contact")}
-                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center border border-black/5 dark:border-white/5 transition-all hover:scale-105"
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center border border-zinc-200 dark:border-zinc-800 transition-all hover:scale-105"
                 title="Message"
               >
                 <MessageSquare size={15} />
@@ -118,14 +118,14 @@ export default function HeroSection({ isDark }) {
                 href="https://wa.me/919911471995"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center border border-black/5 dark:border-white/5 transition-all hover:scale-105"
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center border border-zinc-200 dark:border-zinc-800 transition-all hover:scale-105"
                 title="WhatsApp Call"
               >
                 <Phone size={15} />
               </a>
               <a
                 href="mailto:asifimam999@gmail.com"
-                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center border border-black/5 dark:border-white/5 transition-all hover:scale-105"
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center border border-zinc-200 dark:border-zinc-800 transition-all hover:scale-105"
                 title="Video Consultation"
               >
                 <Video size={15} />
@@ -138,7 +138,7 @@ export default function HeroSection({ isDark }) {
             variants={itemVariants}
             className="w-full max-w-2xl rounded-3xl md:rounded-[2rem] border-2 border-dashed border-zinc-200 dark:border-zinc-800 p-4 sm:p-6 flex items-center gap-4 bg-zinc-50/50 dark:bg-zinc-900/10 hover:bg-zinc-100/50 dark:hover:bg-zinc-900/30 transition-all duration-300 text-left"
           >
-            <div className="w-12 h-12 rounded-2xl bg-zinc-200 dark:bg-zinc-900 flex flex-col items-center justify-center border border-black/5 dark:border-white/10 shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-zinc-200 dark:bg-zinc-900 flex flex-col items-center justify-center border border-zinc-300 dark:border-white/10 shrink-0">
               <span className="text-base font-sans font-black tracking-tighter text-black dark:text-white">
                 4Log
               </span>
@@ -211,7 +211,7 @@ export default function HeroSection({ isDark }) {
             </div>
 
             {/* Experience Card */}
-            <div className="rounded-2xl md:rounded-[2rem] bg-zinc-50 dark:bg-zinc-900 border border-black/5 dark:border-white/5 p-5 md:p-6 flex flex-col justify-center min-h-[90px] hover:border-black/10 dark:hover:border-white/10 transition-colors">
+            <div className="rounded-2xl md:rounded-[2rem] bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 p-5 md:p-6 flex flex-col justify-center min-h-[90px] hover:border-zinc-350 dark:hover:border-zinc-700 transition-colors">
               <span className="text-2xl sm:text-3xl font-sans font-black tracking-tight text-black dark:text-white">
                 5+ YRS
               </span>
@@ -221,7 +221,7 @@ export default function HeroSection({ isDark }) {
             </div>
 
             {/* Uptime Card */}
-            <div className="rounded-2xl md:rounded-[2rem] bg-zinc-50 dark:bg-zinc-900 border border-black/5 dark:border-white/5 p-5 md:p-6 flex flex-col justify-center min-h-[90px] hover:border-black/10 dark:hover:border-white/10 transition-colors">
+            <div className="rounded-2xl md:rounded-[2rem] bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 p-5 md:p-6 flex flex-col justify-center min-h-[90px] hover:border-zinc-350 dark:hover:border-zinc-700 transition-colors">
               <span className="text-2xl sm:text-3xl font-sans font-black tracking-tight text-lime-accent">
                 99.9%
               </span>

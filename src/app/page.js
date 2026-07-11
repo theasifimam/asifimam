@@ -20,6 +20,14 @@ export default function Portfolio() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDark]);
+
   const theme = {
     bg: isDark ? "bg-[#000000]" : "bg-zinc-50",
     text: isDark ? "text-zinc-100" : "text-zinc-900",
@@ -40,7 +48,7 @@ export default function Portfolio() {
 
   return (
     <div
-      className={`min-h-screen ${isDark ? "bg-[#000000]" : "bg-white"} ${isDark ? "text-white" : "text-black"} font-sans transition-colors duration-500`}
+      className={`min-h-screen ${isDark ? "bg-[#000000] dark" : "bg-white"} ${isDark ? "text-white" : "text-black"} font-sans transition-colors duration-500`}
     >
       <div
         className="fixed inset-0 pointer-events-none opacity-30"

@@ -57,11 +57,11 @@ export default function Experience({ isDark }) {
       </motion.div>
 
       {/* Chats List Timeline */}
-      <div className="rounded-3xl md:rounded-[2.5rem] bg-zinc-50 dark:bg-zinc-950 border border-black/5 dark:border-white/10 p-4 sm:p-6 space-y-3">
+      <div className="rounded-3xl md:rounded-[2.5rem] bg-zinc-50/50 dark:bg-zinc-950/20 border border-zinc-200 dark:border-zinc-800 p-4 sm:p-6 space-y-3">
         
         {/* Chat List Header */}
-        <div className="px-2 py-2 border-b border-black/5 dark:border-white/10 mb-4 flex items-center justify-between">
-          <span className="text-[9px] sm:text-[10px] font-mono font-black text-zinc-400 dark:text-zinc-500 tracking-[0.2em] uppercase">
+        <div className="px-2 py-2 border-b border-zinc-200 dark:border-zinc-800 mb-4 flex items-center justify-between">
+          <span className="text-[9px] sm:text-[10px] font-mono font-black text-zinc-500 dark:text-zinc-400 tracking-[0.2em] uppercase">
             RECENT_CONVERSATIONS
           </span>
           <span className="text-[9px] font-sans font-black bg-lime-accent text-black px-2 py-0.5 rounded-full uppercase tracking-wider">
@@ -76,8 +76,8 @@ export default function Experience({ isDark }) {
               key={i}
               className={`rounded-2xl md:rounded-[2rem] border overflow-hidden transition-all duration-300 ${
                 isExpanded
-                  ? "bg-zinc-100 dark:bg-zinc-900 border-black/10 dark:border-white/10"
-                  : "bg-white dark:bg-black/40 border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 cursor-pointer"
+                  ? "bg-zinc-100/80 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
+                  : "bg-white dark:bg-zinc-900/20 border-zinc-200 dark:border-zinc-800/60 hover:border-zinc-300 dark:hover:border-zinc-700 cursor-pointer"
               }`}
               onClick={() => setExpandedIndex(isExpanded ? -1 : i)}
             >
@@ -107,7 +107,7 @@ export default function Experience({ isDark }) {
 
                 {/* Chat Right Side */}
                 <div className="flex flex-col items-end gap-1.5 shrink-0 text-right">
-                  <span className="text-[8px] sm:text-[9px] font-mono text-zinc-400 dark:text-zinc-500 font-bold uppercase">
+                  <span className="text-[8px] sm:text-[9px] font-mono text-zinc-500 dark:text-zinc-400 font-bold uppercase">
                     {exp.period.split(" — ")[0]}
                   </span>
                   <div className="flex items-center gap-1.5">
@@ -115,7 +115,7 @@ export default function Experience({ isDark }) {
                     <div className="w-5 h-5 rounded-full bg-lime-accent text-black font-extrabold text-[9px] flex items-center justify-center" title={`${exp.achievements.length} achievements`}>
                       {exp.achievements.length}
                     </div>
-                    <ChevronDown size={12} className={`text-zinc-400 transition-transform duration-300 ${isExpanded ? "rotate-180 text-lime-accent" : ""}`} />
+                    <ChevronDown size={12} className={`text-zinc-500 dark:text-zinc-400 transition-transform duration-300 ${isExpanded ? "rotate-180 text-lime-accent" : ""}`} />
                   </div>
                 </div>
               </div>
@@ -129,10 +129,10 @@ export default function Experience({ isDark }) {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <div className="px-4 pb-5 pt-1 sm:px-5 sm:pb-6 sm:pt-2 border-t border-black/5 dark:border-white/5 space-y-4 bg-zinc-50/50 dark:bg-black/20 text-left">
+                    <div className="px-4 pb-5 pt-1 sm:px-5 sm:pb-6 sm:pt-2 border-t border-zinc-200 dark:border-zinc-800 space-y-4 bg-zinc-50/80 dark:bg-black/20 text-left">
                       {/* Job Description */}
                       <div>
-                        <span className="text-[8px] font-mono font-black text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mb-1">
+                        <span className="text-[8px] font-mono font-black text-zinc-500 dark:text-zinc-400 tracking-widest uppercase block mb-1">
                           Role Overview
                         </span>
                         <p className="text-xs sm:text-sm font-sans leading-relaxed text-zinc-700 dark:text-zinc-300">
@@ -142,7 +142,7 @@ export default function Experience({ isDark }) {
 
                       {/* Achievements list */}
                       <div>
-                        <span className="text-[8px] font-mono font-black text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mb-2">
+                        <span className="text-[8px] font-mono font-black text-zinc-500 dark:text-zinc-400 tracking-widest uppercase block mb-2">
                           Key Deliverables
                         </span>
                         <div className="space-y-2">
@@ -159,14 +159,14 @@ export default function Experience({ isDark }) {
 
                       {/* Tech Stack Pills */}
                       <div>
-                        <span className="text-[8px] font-mono font-black text-zinc-400 dark:text-zinc-500 tracking-widest uppercase block mb-2">
+                        <span className="text-[8px] font-mono font-black text-zinc-500 dark:text-zinc-400 tracking-widest uppercase block mb-2">
                           Tech Stack
                         </span>
                         <div className="flex flex-wrap gap-1.5">
                           {exp.techStack.map((tech, idx) => (
                             <span
                               key={idx}
-                              className="px-2.5 py-1 rounded-lg text-[8px] sm:text-[9px] font-sans font-black uppercase tracking-wider bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-black/5 dark:border-white/5"
+                              className="px-2.5 py-1 rounded-lg text-[8px] sm:text-[9px] font-sans font-black uppercase tracking-wider bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700"
                             >
                               {tech}
                             </span>

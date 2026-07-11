@@ -11,9 +11,9 @@ export default function Footer({ isDark = true }) {
 
   const colors = {
     bg: isDark ? "bg-[#000000]" : "bg-white",
-    border: isDark ? "border-white/10" : "border-black/10",
+    border: isDark ? "border-zinc-800" : "border-zinc-200",
     textPrimary: isDark ? "text-white" : "text-black",
-    textSecondary: isDark ? "text-zinc-500" : "text-zinc-400",
+    textSecondary: isDark ? "text-zinc-400" : "text-zinc-500",
     accent: "text-lime-accent",
   };
 
